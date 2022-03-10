@@ -3,7 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Administrator/AndroidStudioProjects/TutorMe/app/src/main/res/layout/activity_login_register.xml" value="0.20520833333333333" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/TutorMe/app/src/main/res/layout/activity_main.xml" value="0.2957427536231884" />
+        <entry key="..\:/Users/Administrator/AndroidStudioProjects/TutorMe/app/src/main/res/layout/activity_profile.xml" value="0.20520833333333333" />
       </map>
     </option>
   </component>
