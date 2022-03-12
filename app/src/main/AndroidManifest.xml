@@ -25,6 +25,9 @@
         <activity android:name=".Demo">
         </activity>
 
+        <activity android:name=".LoginRegister">
+        </activity>
+
     </application>
 
 </manifest>
