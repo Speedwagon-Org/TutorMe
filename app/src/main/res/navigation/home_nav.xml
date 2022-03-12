@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/home_nav"
+    app:startDestination="@id/home2">
+
+    <fragment
+        android:id="@+id/explore"
+        android:name="com.speedwagon.tutorme.explore"
+        android:label="fragment_explore"
+        tools:layout="@layout/fragment_explore" />
+    <fragment
+        android:id="@+id/create_discussion"
+        android:name="com.speedwagon.tutorme.Create_discussion"
+        android:label="fragment_create_discussion"
+        tools:layout="@layout/fragment_create_discussion" />
+    <fragment
+        android:id="@+id/notification_frag"
+        android:name="com.speedwagon.tutorme.notification"
+        android:label="fragment_notification"
+        tools:layout="@layout/fragment_notification" />
+    <fragment
+        android:id="@+id/profile_nav"
+        android:name="com.speedwagon.tutorme.profile_nav"
+        android:label="fragment_profile_nav"
+        tools:layout="@layout/fragment_profile_nav" />
+    <fragment
+        android:id="@+id/home2"
+        android:name="com.speedwagon.tutorme.home"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" />
+</navigation>
