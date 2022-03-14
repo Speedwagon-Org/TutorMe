@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".profile_nav">
+<<<<<<< Updated upstream
 
     <LinearLayout
         android:id="@+id/linearfragment"
@@ -21,4 +22,6 @@
 
     </LinearLayout>
 
+=======
+>>>>>>> Stashed changes
 </LinearLayout>
