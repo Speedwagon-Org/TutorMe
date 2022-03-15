@@ -12,5 +12,6 @@ class LoginRegister : AppCompatActivity(){
         val registerFragment = Register()
         val fm: FragmentManager = supportFragmentManager
         fm.beginTransaction().add(R.id.logResLayout,registerFragment).commit()
+
     }
 }

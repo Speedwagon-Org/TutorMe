@@ -14,5 +14,10 @@ class Demo : AppCompatActivity() {
             val MainmenuIntent = Intent(this, home_main::class.java)
             startActivity(MainmenuIntent)
         }
+
+        findViewById<Button>(R.id.toLogin).setOnClickListener {
+            val MainmenuIntent = Intent(this, LoginRegister::class.java)
+            startActivity(MainmenuIntent)
+        }
     }
 }

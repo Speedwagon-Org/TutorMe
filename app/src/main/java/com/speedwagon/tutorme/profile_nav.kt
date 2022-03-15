@@ -1,59 +1,56 @@
 package com.speedwagon.tutorme
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.EditText
+import android.widget.TextView
+import androidx.fragment.app.FragmentTransaction
+import com.speedwagon.tutorme.databinding.FragmentProfileNavBinding
+import kotlinx.android.synthetic.main.fragment_profile_nav.*
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+private const val EXTRA_STATUS= "STATUS_STATE"
+private  var someStateValue = "kosong"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [profile_nav.newInstance] factory method to
- * create an instance of this fragment.
- */
 class profile_nav : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
-
+    private lateinit var Username : TextView
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile_nav, container, false)
+
+        val view = inflater.inflate(R.layout.fragment_profile_nav,container,false)
+        val textView : TextView = view.findViewById(R.id.usernameid)
+
+        textView.text = savedInstanceState?.getString(EXTRA_STATUS)
+
+        val args = this.arguments
+        val inputdata = args?.get("data")
+        textView.text = inputdata.toString()
+
+        val btn = view.findViewById<Button>(R.id.UpdateProfileBtn)
+
+        btn.setOnClickListener{
+            val currentUsername : TextView = view.findViewById(R.id.usernameid)
+            val input = currentUsername.text.toString()
+            val bundle = Bundle()
+            bundle.putString("data",input)
+            val fragment = UpdateProfileFragment()
+            fragment.arguments = bundle
+            fragmentManager?.beginTransaction()?.replace(R.id.fragmentContainerView,fragment)?.commit()
+        }
+
+        return view
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment profile_nav.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            profile_nav().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    // onSaveInstanceState
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putString(EXTRA_STATUS,usernameid.text.toString())
     }
 }
