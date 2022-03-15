@@ -3,21 +3,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="20dp"
+    android:orientation="vertical"
     tools:context=".explore">
 
-    <LinearLayout
-        android:id="@+id/linearfragment"
+    <SearchView
+        android:id="@+id/svExplore"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:queryHint="Search ..."
+        android:background="@drawable/border"
+        android:layout_margin="10dp"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycleExplore"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Exploree"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:textSize="20dp"/>
+        android:orientation="vertical"
+        tools:listitem="@layout/recycler_explore"/>
 
-    </LinearLayout>
 </LinearLayout>
