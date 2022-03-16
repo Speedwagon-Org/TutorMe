@@ -53,4 +53,5 @@ class profile_nav : Fragment() {
         super.onSaveInstanceState(outState)
         outState.putString(EXTRA_STATUS,usernameid.text.toString())
     }
+
 }
