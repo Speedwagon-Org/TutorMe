@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 class ExploreAdapter : RecyclerView.Adapter<ExploreAdapter.ViewHolder>(){
+
     private val image = arrayOf(
         R.drawable.ic_account,
         R.drawable.ic_account,

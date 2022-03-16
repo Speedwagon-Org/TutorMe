@@ -23,8 +23,8 @@ class profile_nav : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        val view = inflater.inflate(R.layout.fragment_profile_nav,container,false)
-        val textView : TextView = view.findViewById(R.id.usernameid)
+        val view = inflater.inflate(R.layout.fragment_profile_nav, container, false)
+        val textView: TextView = view.findViewById(R.id.usernameid)
 
         textView.text = savedInstanceState?.getString(EXTRA_STATUS)
 
@@ -34,16 +34,16 @@ class profile_nav : Fragment() {
 
         val btn = view.findViewById<Button>(R.id.UpdateProfileBtn)
 
-        btn.setOnClickListener{
-            val currentUsername : TextView = view.findViewById(R.id.usernameid)
+        btn.setOnClickListener {
+            val currentUsername: TextView = view.findViewById(R.id.usernameid)
             val input = currentUsername.text.toString()
             val bundle = Bundle()
-            bundle.putString("data",input)
+            bundle.putString("data", input)
             val fragment = UpdateProfileFragment()
             fragment.arguments = bundle
-            fragmentManager?.beginTransaction()?.replace(R.id.fragmentContainerView,fragment)?.commit()
+            fragmentManager?.beginTransaction()?.replace(R.id.fragmentContainerView, fragment)
+                ?.commit()
         }
-
         return view
     }
 

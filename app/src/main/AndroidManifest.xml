@@ -27,6 +27,9 @@
 
         <activity android:name=".LoginRegister">
         </activity>
+        <activity android:name=".More_Detail_Profile">
+
+        </activity>
 
     </application>
 

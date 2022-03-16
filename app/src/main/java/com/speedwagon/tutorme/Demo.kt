@@ -15,7 +15,7 @@ class Demo : AppCompatActivity() {
             startActivity(MainmenuIntent)
         }
 
-        findViewById<Button>(R.id.toLogin).setOnClickListener {
+        findViewById<Button>(R.id.toLogReg).setOnClickListener {
             val MainmenuIntent = Intent(this, LoginRegister::class.java)
             startActivity(MainmenuIntent)
         }
