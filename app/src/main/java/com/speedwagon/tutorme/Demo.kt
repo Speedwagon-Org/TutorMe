@@ -1,15 +1,9 @@
 package com.speedwagon.tutorme
 
 import android.content.Intent
-import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
-import android.widget.Toast
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
-import androidx.fragment.app.Fragment
-import java.io.File
 
 class Demo : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,7 +15,7 @@ class Demo : AppCompatActivity() {
             startActivity(MainmenuIntent)
         }
 
-        findViewById<Button>(R.id.toLogin).setOnClickListener {
+        findViewById<Button>(R.id.toLogReg).setOnClickListener {
             val MainmenuIntent = Intent(this, LoginRegister::class.java)
             startActivity(MainmenuIntent)
         }

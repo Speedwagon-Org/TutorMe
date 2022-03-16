@@ -3,22 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".notification">
 
-    <LinearLayout
-        android:id="@+id/linearfragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-        <TextView
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycleNotify"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Notification"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:textSize="20dp"/>
-
-    </LinearLayout>
+            tools:listitem="@layout/recycler_notification"/>
 
 </LinearLayout>
