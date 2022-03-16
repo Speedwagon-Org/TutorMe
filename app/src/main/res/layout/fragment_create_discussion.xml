@@ -1,24 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Create_discussion">
+    android:orientation="vertical"
+    tools:context=".CreateDiscussion"
+    android:background="@drawable/stroke">
+
 
     <LinearLayout
-        android:id="@+id/linearfragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Create"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:textSize="20dp"/>
+        android:layout_height="70dp">
 
+
+        <ImageButton
+            android:onClick="onClickIbtnCari"
+            android:id="@+id/ibtnCari"
+            android:layout_width="25dp"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/tvHomepage"
+            android:background="#00000000"
+            android:elevation="40dp"
+            android:scaleType="centerInside"
+            android:src="@mipmap/search" />
+
+        <ImageButton
+            android:id="@+id/ibtnFilter"
+            android:layout_width="25dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/ibtnCari"
+            android:background="#00000000"
+            android:elevation="40dp"
+            android:onClick="onClickIbtnFilter"
+            android:scaleType="centerInside"
+            android:src="@mipmap/filter"
+            tools:ignore="UsingOnClickInXml" />
+
+        <TextView
+            android:id="@+id/tvPopuler"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginVertical="12dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="@dimen/7sdp"
+            android:text="Create Discussion"
+            android:textColor="@color/black"
+            android:textSize="39dp" />
     </LinearLayout>
 
-</LinearLayout>
+
+    <ImageView
+        android:id="@+id/igvPopuler"
+        android:layout_width="103dp"
+        android:layout_height="78dp"
+        android:layout_below="@+id/tvPopuler"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/borderivpopuler"
+        android:scaleType="fitXY"
+        android:src="@mipmap/populer" />
+
+    <FrameLayout
+        android:layout_width="280dp"
+        android:layout_height="137dp"
+        android:layout_marginTop="@dimen/_3sdp"
+        android:layout_marginLeft="@dimen/_98sdp"
+        android:orientation="vertical">
+
+        tools:ignore="UsingOnClickInXml" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvNamaPopuler"
+            android:layout_gravity="bottom"
+            android:layout_marginLeft="52dp"
+            android:layout_marginTop="13dp"
+            android:layout_marginBottom="15dp"
+            android:text="deskripsi"
+            android:textColor="@color/black"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+    </FrameLayout>
+
