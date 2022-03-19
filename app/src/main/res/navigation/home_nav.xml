@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/explore"
-        android:name="com.speedwagon.tutorme.explore"
+        android:name="com.speedwagon.tutorme.Explore.explore"
         android:label="fragment_explore"
         tools:layout="@layout/fragment_explore" />
     <fragment
@@ -17,7 +17,7 @@
         tools:layout="@layout/fragment_create_discussion" />
     <fragment
         android:id="@+id/notification_frag"
-        android:name="com.speedwagon.tutorme.notification"
+        android:name="com.speedwagon.tutorme.Notification.notification"
         android:label="fragment_notification"
         tools:layout="@layout/fragment_notification" />
     <fragment

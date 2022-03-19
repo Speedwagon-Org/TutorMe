@@ -3,11 +3,9 @@ package com.speedwagon.tutorme
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.navigation.ui.setupWithNavController
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import com.google.android.material.bottomnavigation.BottomNavigationMenuView
-import kotlinx.android.synthetic.main.activity_home.*
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.speedwagon.tutorme.Explore.explore
+import com.speedwagon.tutorme.Notification.notification
 
 class home_main : AppCompatActivity() {
 
@@ -21,6 +19,8 @@ class home_main : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
         replacefragment(home)
+
+        val bottomnav= findViewById<BottomNavigationView>(R.id.bottomnav)
 
         bottomnav.setOnNavigationItemSelectedListener {
             when(it.itemId){

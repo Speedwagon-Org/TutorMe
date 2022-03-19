@@ -21,13 +21,11 @@
 
         <activity android:name=".home_main">
         </activity>
-
-        <activity android:name=".Demo">
-        </activity>
-
         <activity android:name=".LoginRegister">
         </activity>
         <activity android:name=".More_Detail_Profile">
+        </activity>
+        <activity android:name=".Discussion.DiscussionContent">
 
         </activity>
 

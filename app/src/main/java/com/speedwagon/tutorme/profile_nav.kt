@@ -1,5 +1,6 @@
 package com.speedwagon.tutorme
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -11,7 +12,6 @@ import android.widget.EditText
 import android.widget.TextView
 import androidx.fragment.app.FragmentTransaction
 import com.speedwagon.tutorme.databinding.FragmentProfileNavBinding
-import kotlinx.android.synthetic.main.fragment_profile_nav.*
 
 private const val EXTRA_STATUS= "STATUS_STATE"
 private  var someStateValue = "kosong"
@@ -51,7 +51,8 @@ class profile_nav : Fragment() {
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        outState.putString(EXTRA_STATUS,usernameid.text.toString())
+        val usernameid= view?.findViewById<TextView>(R.id.usernameid)
+        outState.putString(EXTRA_STATUS,usernameid?.text.toString())
     }
 
 }

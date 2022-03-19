@@ -1,4 +1,4 @@
-package com.speedwagon.tutorme
+package com.speedwagon.tutorme.Explore
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,26 +6,16 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.speedwagon.tutorme.R
 
-class ExploreAdapter : RecyclerView.Adapter<ExploreAdapter.ViewHolder>(){
+class ExploreAdapter(
+    private val DiscussionList: ArrayList<ExploreItem>,
+    private val onExploreClickListener: OnExploreClickListener
+    ) : RecyclerView.Adapter<ExploreAdapter.ViewHolder>(){
 
-    private val image = arrayOf(
-        R.drawable.ic_account,
-        R.drawable.ic_account,
-        R.drawable.ic_account
-    )
-
-    private val username = arrayOf(
-        "CoolKid42",
-        "AlexTheGamer",
-        "NoobMaster"
-    )
-
-    private val question = arrayOf(
-        "How do I open a new fragment from another fragment?",
-        "How to make Discord bot?",
-        "Best mechanical keyboard under $100"
-    )
+    interface OnExploreClickListener{
+        fun onExploreClicked(position: Int,item: ExploreItem)
+    }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         var imgAccount : ImageView
@@ -46,13 +36,16 @@ class ExploreAdapter : RecyclerView.Adapter<ExploreAdapter.ViewHolder>(){
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.imgAccount.setImageResource(image.get(position))
-        holder.tvUsername.text = username[position]
-        holder.tvQuestion.text = question[position]
-
+        val itemdiscussion = DiscussionList[position]
+        holder.imgAccount.setImageResource(itemdiscussion.ImageProfile)
+        holder.tvUsername.text = itemdiscussion.Username
+        holder.tvQuestion.text = itemdiscussion.DiscussionContent
+        holder.itemView.setOnClickListener {
+            onExploreClickListener.onExploreClicked(position,itemdiscussion)
+        }
     }
 
     override fun getItemCount(): Int {
-        return image.size
+        return DiscussionList.size
     }
 }
