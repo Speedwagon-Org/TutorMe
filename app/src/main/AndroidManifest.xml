@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.speedwagon.tutorme">
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
 
     <application
         android:allowBackup="true"
@@ -25,9 +26,10 @@
         </activity>
         <activity android:name=".More_Detail_Profile">
         </activity>
-        <activity android:name=".Discussion.DiscussionContent">
-
-        </activity>
+        <activity
+            android:name=".Discussion.DiscussionContent"
+            android:launchMode="singleTask"/>
+        <service android:name=".Service.ServiceOnDiscussion"/>
 
     </application>
 

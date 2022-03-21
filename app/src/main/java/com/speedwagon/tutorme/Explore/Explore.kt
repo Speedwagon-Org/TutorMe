@@ -28,7 +28,6 @@ class explore : Fragment(), ExploreAdapter.OnExploreClickListener{
         }
 
     override fun onExploreClicked(position: Int, item: ExploreItem) {
-        Toast.makeText(context, "starting activity in $position", Toast.LENGTH_SHORT).show()
         val intent = Intent(context, DiscussionContent::class.java).apply {
             putExtra("ExploreItem", item)
         }
