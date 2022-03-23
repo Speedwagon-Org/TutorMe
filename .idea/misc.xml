@@ -34,7 +34,29 @@
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/TutorMe/app/src/main/res/layout/recycler_notification.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/TutorMe/app/src/main/res/layout/update_profile.xml" value="0.33" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/TutorMe/app/src/main/res/menu/bottom_menu.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/Administrator/AndroidStudioProjects/TutorMe/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.22135416666666666" />
+        <entry key="..\:/Users/HP/Documents/GitHub/TutorMe/app/src/main/res/drawable/ic_add.xml" value="0.37864583333333335" />
+        <entry key="..\:/Users/HP/Documents/GitHub/TutorMe/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.20185185185185187" />
+        <entry key="..\:/Users/HP/Documents/GitHub/TutorMe/app/src/main/res/drawable/ic_baseline_share_24.xml" value="0.37864583333333335" />
+        <entry key="..\:/Users/HP/Documents/GitHub/TutorMe/app/src/main/res/drawable/ic_comment.xml" value="0.37864583333333335" />
+        <entry key="..\:/Users/HP/Documents/GitHub/TutorMe/app/src/main/res/drawable/ic_emoji.xml" value="0.37864583333333335" />
+        <entry key="..\:/Users/HP/Documents/GitHub/TutorMe/app/src/main/res/drawable/ic_favorite.xml" value="0.37864583333333335" />
+        <entry key="..\:/Users/HP/Documents/GitHub/TutorMe/app/src/main/res/drawable/ic_favorite_border.xml" value="0.37864583333333335" />
+        <entry key="..\:/Users/HP/Documents/GitHub/TutorMe/app/src/main/res/drawable/ic_image.xml" value="0.37864583333333335" />
+        <entry key="..\:/Users/HP/Documents/GitHub/TutorMe/app/src/main/res/drawable/ic_link.xml" value="0.37864583333333335" />
+        <entry key="..\:/Users/HP/Documents/GitHub/TutorMe/app/src/main/res/drawable/ic_password.xml" value="0.37864583333333335" />
+        <entry key="..\:/Users/HP/Documents/GitHub/TutorMe/app/src/main/res/drawable/ic_reply.xml" value="0.37864583333333335" />
+        <entry key="..\:/Users/HP/Documents/GitHub/TutorMe/app/src/main/res/layout/activity_home.xml" value="0.1" />
+        <entry key="..\:/Users/HP/Documents/GitHub/TutorMe/app/src/main/res/layout/activity_login_register.xml" value="0.3625" />
+        <entry key="..\:/Users/HP/Documents/GitHub/TutorMe/app/src/main/res/layout/fragment_create_discussion.xml" value="0.25" />
+        <entry key="..\:/Users/HP/Documents/GitHub/TutorMe/app/src/main/res/layout/fragment_explore.xml" value="0.27445652173913043" />
+        <entry key="..\:/Users/HP/Documents/GitHub/TutorMe/app/src/main/res/layout/fragment_home.xml" value="0.25" />
+        <entry key="..\:/Users/HP/Documents/GitHub/TutorMe/app/src/main/res/layout/fragment_login.xml" value="0.3625" />
+        <entry key="..\:/Users/HP/Documents/GitHub/TutorMe/app/src/main/res/layout/fragment_notification.xml" value="0.3625" />
+        <entry key="..\:/Users/HP/Documents/GitHub/TutorMe/app/src/main/res/layout/fragment_profile_nav.xml" value="0.3625" />
+        <entry key="..\:/Users/HP/Documents/GitHub/TutorMe/app/src/main/res/layout/fragment_register.xml" value="0.3625" />
+        <entry key="..\:/Users/HP/Documents/GitHub/TutorMe/app/src/main/res/layout/fragment_update_profile.xml" value="0.3625" />
+        <entry key="..\:/Users/HP/Documents/GitHub/TutorMe/app/src/main/res/layout/recycler_explore.xml" value="0.27445652173913043" />
+        <entry key="..\:/Users/HP/Documents/GitHub/TutorMe/app/src/main/res/layout/recycler_notification.xml" value="0.3625" />
       </map>
     </option>
   </component>

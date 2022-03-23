@@ -4,72 +4,93 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".Create_discussion"
+    android:background="@drawable/background_profile_color">
+
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="70dp">
-
-
-        <ImageButton
-            android:onClick="onClickIbtnCari"
-            android:id="@+id/ibtnCari"
-            android:layout_width="25dp"
-            android:layout_height="wrap_content"
-            android:background="#00000000"
-            android:elevation="40dp"
-            android:scaleType="centerInside" />
-
-        <ImageButton
-            android:id="@+id/ibtnFilter"
-            android:layout_width="25dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_toRightOf="@id/ibtnCari"
-            android:background="#00000000"
-            android:elevation="40dp"
-            android:onClick="onClickIbtnFilter"
-            android:scaleType="centerInside"
-            tools:ignore="UsingOnClickInXml" />
-
         <TextView
             android:id="@+id/tvPopuler"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
             android:layout_marginVertical="12dp"
-            android:layout_marginLeft="0dp"
+            android:gravity="center"
+            android:layout_marginLeft="45dp"
+            android:layout_marginTop="@dimen/_10sdp"
             android:text="Create Discussion"
             android:textColor="@color/black"
             android:textSize="39dp" />
     </LinearLayout>
+    <FrameLayout
+        android:layout_width="400dp"
+        android:layout_height="250dp"
+        android:layout_marginLeft="@dimen/_3sdp"
+        android:layout_marginTop="@dimen/_3sdp"
+        android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
         <ImageView
             android:id="@+id/igvPopuler"
             android:layout_width="103dp"
             android:layout_height="78dp"
             android:layout_below="@+id/tvPopuler"
+            android:background="#fff"
+            android:src="@drawable/me"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
             android:scaleType="fitXY" />
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginLeft="125dp"
+           android:layout_marginTop="@dimen/_3sdp"
+            android:layout_marginBottom="210dp"
+            android:gravity="center"
+            android:text="Creat new post..."
+            android:textColor="@color/black"
+            android:textSize="20dp" />
+    </FrameLayout>
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Update Discussion" />
-        </com.google.android.material.textfield.TextInputLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_3sdp"
+        android:orientation="horizontal" >
 
+        <ImageView
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginStart="@dimen/_40sdp"
+            android:background="@drawable/ic_image" />
+
+        <ImageView
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginStart="@dimen/_40sdp"
+            android:background="@drawable/ic_link" />
+
+        <ImageView
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginStart="@dimen/_40sdp"
+            android:background="@drawable/ic_emoji" />
+
+        <ImageView
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginStart="@dimen/_40sdp"
+            android:background="@drawable/ic_add" />
 
     </LinearLayout>
 
-
 </LinearLayout>
+
+
+
+
 
