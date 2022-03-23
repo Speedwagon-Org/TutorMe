@@ -1,15 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.speedwagon.tutorme">
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
     <application
+        android:name=".application"
         android:allowBackup="true"
         android:icon="@drawable/icon_app"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TutorMe">
+        <receiver
+            android:name=".Receiver.InternetReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIIVITY_CHANGE"/>
+            </intent-filter>
+
+        </receiver>
+
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -19,18 +33,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".home_main">
-        </activity>
-        <activity android:name=".LoginRegister">
-        </activity>
-        <activity android:name=".More_Detail_Profile">
-        </activity>
+        <activity android:name=".home_main" />
+        <activity android:name=".LoginRegister" />
+        <activity android:name=".More_Detail_Profile" />
         <activity
             android:name=".Discussion.DiscussionContent"
-            android:launchMode="singleTask"/>
-        <service android:name=".Service.ServiceOnDiscussion"/>
+            android:launchMode="singleTask" />
 
+        <service android:name=".Service.ServiceOnDiscussion" />
     </application>
 
 </manifest>
