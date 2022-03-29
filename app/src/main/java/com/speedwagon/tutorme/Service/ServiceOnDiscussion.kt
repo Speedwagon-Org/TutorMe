@@ -45,10 +45,14 @@ class ServiceOnDiscussion: Service() {
 
     private fun createNotificationChannel() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val descriptionText= "Test"
             val serviceChannel = NotificationChannel(
                 Channel_ID,"My Service Channel",
                 NotificationManager.IMPORTANCE_DEFAULT
-            )
+            ).apply {
+                setShowBadge(true)
+                description = descriptionText
+            }
             val manager = getSystemService(
                 NotificationManager::class.java
             )

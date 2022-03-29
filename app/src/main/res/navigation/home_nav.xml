@@ -27,7 +27,7 @@
         tools:layout="@layout/fragment_profile_nav" />
     <fragment
         android:id="@+id/home2"
-        android:name="com.speedwagon.tutorme.home"
+        android:name="com.speedwagon.tutorme.Home.home"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
 </navigation>

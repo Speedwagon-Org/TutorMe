@@ -5,87 +5,53 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Create_discussion"
-    android:background="@drawable/background_profile_color">
+    tools:context=".Create_discussion">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Create Discussion :"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:textSize="15sp"/>
 
-
-    <LinearLayout
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
-        android:layout_height="70dp">
-        <TextView
-            android:id="@+id/tvPopuler"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:layout_marginVertical="12dp"
-            android:gravity="center"
-            android:layout_marginLeft="45dp"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:text="Create Discussion"
-            android:textColor="@color/black"
-            android:textSize="39dp" />
-    </LinearLayout>
-    <FrameLayout
-        android:layout_width="400dp"
-        android:layout_height="250dp"
-        android:layout_marginLeft="@dimen/_3sdp"
-        android:layout_marginTop="@dimen/_3sdp"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        >
 
-        <ImageView
-            android:id="@+id/igvPopuler"
-            android:layout_width="103dp"
-            android:layout_height="78dp"
-            android:layout_below="@+id/tvPopuler"
-            android:background="#fff"
-            android:src="@drawable/me"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:scaleType="fitXY" />
-
-        <TextView
-            android:layout_width="wrap_content"
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:layout_marginLeft="125dp"
-           android:layout_marginTop="@dimen/_3sdp"
-            android:layout_marginBottom="210dp"
-            android:gravity="center"
-            android:text="Creat new post..."
-            android:textColor="@color/black"
-            android:textSize="20dp" />
-    </FrameLayout>
+            android:hint="Masukan Pertanyaan . . ." />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_3sdp"
-        android:orientation="horizontal" >
+        android:orientation="horizontal">
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_image"
+            android:background="@color/white"
+            android:layout_marginStart="10dp"/>
 
-        <ImageView
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:layout_marginStart="@dimen/_40sdp"
-            android:background="@drawable/ic_image" />
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_link"
+            android:background="@color/white"
+            android:layout_marginLeft="15dp"/>
 
-        <ImageView
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:layout_marginStart="@dimen/_40sdp"
-            android:background="@drawable/ic_link" />
-
-        <ImageView
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:layout_marginStart="@dimen/_40sdp"
-            android:background="@drawable/ic_emoji" />
-
-        <ImageView
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:layout_marginStart="@dimen/_40sdp"
-            android:background="@drawable/ic_add" />
-
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginLeft="220dp"
+            android:text="Kirim"
+            android:background="@color/white"/>
     </LinearLayout>
 
 </LinearLayout>

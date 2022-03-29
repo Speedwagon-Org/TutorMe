@@ -1,7 +1,5 @@
 package com.speedwagon.tutorme
 
-import android.content.BroadcastReceiver
-import android.content.Intent
 import android.content.IntentFilter
 import android.net.ConnectivityManager
 import android.os.Bundle
@@ -10,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.speedwagon.tutorme.Explore.explore
+import com.speedwagon.tutorme.Home.home
 import com.speedwagon.tutorme.Notification.notification
 import com.speedwagon.tutorme.Receiver.InternetReceiver
 

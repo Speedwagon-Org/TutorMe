@@ -1,16 +1,14 @@
 package com.speedwagon.tutorme.Discussion
 
-import android.app.ActivityManager
+import android.app.*
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.speedwagon.tutorme.R
 import com.speedwagon.tutorme.Service.ServiceOnDiscussion
-import com.speedwagon.tutorme.databinding.ActivityMainBinding
 import com.speedwagon.tutorme.databinding.DiscussionContentBinding
+import com.speedwagon.tutorme.home_main
 
 class DiscussionContent: AppCompatActivity() {
     private lateinit var binding:DiscussionContentBinding
@@ -19,10 +17,14 @@ class DiscussionContent: AppCompatActivity() {
         binding = DiscussionContentBinding.inflate(layoutInflater)
         setContentView(binding.root)
         StartTheService()
+
         binding.Back.setOnClickListener{
-            finish()
             StopTheService()
+            val homeMain = Intent(this, home_main::class.java)
+            startActivity(homeMain)
+            finish()
         }
+
     }
 
     private fun StopTheService() {
