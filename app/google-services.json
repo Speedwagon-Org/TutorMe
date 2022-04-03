@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "391362825176",
+    "firebase_url": "https://tutorme-78b90-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "tutorme-78b90",
+    "storage_bucket": "tutorme-78b90.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:391362825176:android:663e558e963bba8060c0ad",
+        "android_client_info": {
+          "package_name": "com.speedwagon.tutorme"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "391362825176-fhcrqvihou31gjslia0dl48gcv5tvvkp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC9uC4Vs9Hry_6G_6KaSnipl2RlwzocXZs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "391362825176-fhcrqvihou31gjslia0dl48gcv5tvvkp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

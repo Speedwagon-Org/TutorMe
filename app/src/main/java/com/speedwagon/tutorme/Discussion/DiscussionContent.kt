@@ -34,7 +34,7 @@ class DiscussionContent: AppCompatActivity() {
 
         val builder = NotificationCompat.Builder(this, Constants.Channel_ID)
             .setSmallIcon(R.drawable.logo)
-            .setContentTitle("My notification")
+            .setContentTitle("someone has replied to your post")
             .setContentText("Hello World!")
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
             // Set the intent that will fire when the user taps the notification
@@ -76,7 +76,6 @@ class DiscussionContent: AppCompatActivity() {
     }
 
     private fun StopTheService() {
-        Toast.makeText(this, "Service Stopped", Toast.LENGTH_SHORT).show()
         stopService(Intent(this,ServiceOnDiscussion::class.java))
     }
 
@@ -84,7 +83,6 @@ class DiscussionContent: AppCompatActivity() {
         if(isMyserviceRunning(ServiceOnDiscussion::class.java)){
             Toast.makeText(this, "Welcome Back !!!", Toast.LENGTH_SHORT).show()
         }else{
-            Toast.makeText(this, "Service Started", Toast.LENGTH_SHORT).show()
             startService(Intent(this,ServiceOnDiscussion::class.java))
         }
     }

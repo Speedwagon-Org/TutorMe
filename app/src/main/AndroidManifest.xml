@@ -34,7 +34,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".home_main" />
-        <activity android:name=".LoginRegister" />
+        <activity android:name=".LoginRegister.LoginRegister" />
         <activity
             android:name=".Discussion.DiscussionContent"
             android:launchMode="singleTask" />

@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Login">
+    tools:context=".LoginRegister.Login">
 
     <EditText
-        android:id="@+id/inputUsernameEmail"
+        android:id="@+id/inputUsername"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:ems="10"
-        android:hint="Username / Email"
+        android:hint="Username"
         android:inputType="textPersonName"
         android:textColor="@color/black"
         android:background="@drawable/border"
@@ -57,10 +57,10 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.752"
+        app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.843" />
+        app:layout_constraintTop_toBottomOf="@+id/textView5"
+        app:layout_constraintVertical_bias="0.152" />
 
     <TextView
         android:id="@+id/textView5"
@@ -72,10 +72,10 @@
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.29"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.831" />
+        app:layout_constraintVertical_bias="0.83" />
 
     <Button
         android:id="@+id/buttonLogin"

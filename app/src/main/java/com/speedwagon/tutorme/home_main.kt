@@ -7,13 +7,15 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import com.speedwagon.tutorme.Explore.explore
 import com.speedwagon.tutorme.Home.home
 import com.speedwagon.tutorme.Notification.notification
 import com.speedwagon.tutorme.Receiver.InternetReceiver
 
 class home_main : AppCompatActivity(), InternetReceiver.ConnectionReceiverListener{
-
     private val home = home()
     private val Explore = explore()
     private val create = Create_discussion()
@@ -26,6 +28,7 @@ class home_main : AppCompatActivity(), InternetReceiver.ConnectionReceiverListen
         baseContext.registerReceiver(InternetReceiver(),
             IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION)
         )
+
         com.speedwagon.tutorme.application.instance.setConnectionListener(this)
         setContentView(R.layout.activity_home)
         replacefragment(home)

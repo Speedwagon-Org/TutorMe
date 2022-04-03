@@ -7,52 +7,62 @@
     android:orientation="vertical"
     tools:context=".Create_discussion">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Create Discussion :"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:textSize="15sp"/>
-
-    <com.google.android.material.textfield.TextInputLayout
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        >
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Masukan Pertanyaan . . ." />
-    </com.google.android.material.textfield.TextInputLayout>
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <ImageButton
+        android:orientation="vertical"
+        android:layout_marginTop="20dp">
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_image"
-            android:background="@color/white"
-            android:layout_marginStart="10dp"/>
+            android:text="Create Discussion :"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:textSize="15sp"/>
 
-        <ImageButton
-            android:layout_width="wrap_content"
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_link"
-            android:background="@color/white"
-            android:layout_marginLeft="15dp"/>
+            android:layout_margin="10dp"
+            >
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_marginLeft="220dp"
-            android:text="Kirim"
-            android:background="@color/white"/>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/contentpost"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Masukan Pertanyaan . . ." />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_image"
+                android:background="@color/white"
+                android:layout_marginStart="10dp"/>
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_link"
+                android:background="@color/white"
+                android:layout_marginLeft="15dp"/>
+
+            <Button
+                android:id="@+id/Send"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginLeft="200dp"
+                android:text="Kirim"
+                android:background="@color/white"/>
+        </LinearLayout>
     </LinearLayout>
+
+
 
 </LinearLayout>
 

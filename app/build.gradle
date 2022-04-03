@@ -3,12 +3,13 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-kapt'
     id 'kotlin-parcelize'
+    id 'com.google.gms.google-services'
 }
 android {
     compileSdk 31
 
     defaultConfig {
-        applicationId "com.speedwagon.certificatekeeper"
+        applicationId "com.speedwagon.tutorme"
         minSdk 21
         targetSdk 31
         versionCode 1
@@ -46,6 +47,9 @@ dependencies {
     implementation 'androidx.navigation:navigation-fragment-ktx:2.4.1'
     implementation 'androidx.navigation:navigation-ui-ktx:2.4.1'
     implementation 'androidx.databinding:databinding-runtime:7.1.2'
+    implementation 'com.google.firebase:firebase-database:19.2.1'
+    implementation 'com.google.firebase:firebase-database-ktx:20.0.4'
+    implementation 'com.google.firebase:firebase-auth-ktx:21.0.3'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
     implementation 'com.intuit.sdp:sdp-android:1.0.6'
