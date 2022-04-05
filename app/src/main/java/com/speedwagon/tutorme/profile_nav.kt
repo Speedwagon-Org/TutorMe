@@ -10,11 +10,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.FragmentTransaction
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.*
@@ -24,7 +27,8 @@ import com.speedwagon.tutorme.LoginRegister.DataUser
 import com.speedwagon.tutorme.databinding.FragmentProfileNavBinding
 
 private const val EXTRA_STATUS= "STATUS_STATE"
-private  var someStateValue = "kosong"
+private var someStateValue = "kosong"
+private var clicked = false
 
 class profile_nav : Fragment() {
 
@@ -36,7 +40,6 @@ class profile_nav : Fragment() {
         //onSaveinstance
         val view = inflater.inflate(R.layout.fragment_profile_nav, container, false)
         val textView: TextView = view.findViewById(R.id.usernameid)
-
         textView.text = savedInstanceState?.getString(EXTRA_STATUS)
 
         val args = this.arguments
@@ -44,7 +47,6 @@ class profile_nav : Fragment() {
         textView.text = inputdata.toString()
 
         val btn = view.findViewById<Button>(R.id.UpdateProfileBtn)
-
         btn.setOnClickListener {
             val currentUsername: TextView = view.findViewById(R.id.usernameid)
             val input = currentUsername.text.toString()
@@ -55,9 +57,25 @@ class profile_nav : Fragment() {
             fragmentManager?.beginTransaction()?.replace(R.id.fragmentContainerView, fragment)
                 ?.commit()
         }
+        //Floating action button
+        val fab = view.findViewById<FloatingActionButton>(R.id.fab)
+        val remind = view.findViewById<FloatingActionButton>(R.id.fab_remind)
+        fab.setOnClickListener {
+            clicked = !clicked
+            if(!clicked){
+                remind.visibility = View.VISIBLE
+            }
+            else{
+                remind.visibility = View.INVISIBLE
+            }
+        }
+        remind.setOnClickListener{
+            val remindMe = RemindMe()
+            val transaction = fragmentManager?.beginTransaction()
+            transaction?.replace(R.id.fragmentContainerView,remindMe)?.commit()
+        }
         return view
     }
-
     // onSaveInstanceState
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -65,5 +83,6 @@ class profile_nav : Fragment() {
         val usernameid= view?.findViewById<TextView>(R.id.usernameid)
         outState.putString(EXTRA_STATUS,usernameid?.text.toString())
     }
+
 
 }
