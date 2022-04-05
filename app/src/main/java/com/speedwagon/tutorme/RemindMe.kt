@@ -26,14 +26,16 @@ class RemindMe: Fragment(){
         val sdf = SimpleDateFormat(format)
         return sdf.format(cal.time)
     }
-    private fun remindTimePicker() : TimePickerDialog.OnTimeSetListener{
-        val timeSetListener =
-            TimePickerDialog.OnTimeSetListener { view, hourOfDay, minute ->
+    private fun remindTimePicker() :TimePickerDialog.OnTimeSetListener{
+        val timeSetListener = object : TimePickerDialog.OnTimeSetListener{
+            override fun onTimeSet(Tm: TimePicker?, hourOfDay: Int, minute: Int) {
                 cal.set(Calendar.HOUR_OF_DAY,hourOfDay)
                 cal.set(Calendar.MINUTE,minute)
                 val remindTime = view?.findViewById<TextView>(R.id.remindTime)
                 remindTime?.text = setTimeFormat()
             }
+
+        }
         return timeSetListener
     }
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -56,7 +58,7 @@ class RemindMe: Fragment(){
                 mPendingIntent?.cancel()
             }
             val setRemindTime = Calendar.getInstance()
-            val time = remindTime.text.split("")
+            val time = remindTime.text.split(":")
             setRemindTime.set(Calendar.HOUR_OF_DAY,time[0].toInt())
             setRemindTime.set(Calendar.MINUTE,time[1].toInt())
             setRemindTime.set(Calendar.SECOND,0)
