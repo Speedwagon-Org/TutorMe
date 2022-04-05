@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.speedwagon.tutorme">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -21,7 +22,10 @@
             <intent-filter>
                 <action android:name="android.net.conn.CONNECTIIVITY_CHANGE"/>
             </intent-filter>
-
+        </receiver>
+        <receiver android:name=".Receiver.RemindReceiver"
+            android:enabled="true"
+            android:exported="true">
         </receiver>
 
         <activity
