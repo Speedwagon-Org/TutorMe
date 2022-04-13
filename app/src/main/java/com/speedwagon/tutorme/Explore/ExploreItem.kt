@@ -7,5 +7,5 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class ExploreItem (
     val ImageProfile: Int = R.drawable.ic_baseline_person_24,
-    val Username: String = "Guest",
-    val DiscussionContent: String = "test"): Parcelable
+    var Username: String = "Guest",
+    var Text: String = "test"): Parcelable

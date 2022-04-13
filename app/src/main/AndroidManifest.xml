@@ -15,6 +15,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TutorMe">
+
         <receiver
             android:name=".Receiver.InternetReceiver"
             android:enabled="true"
@@ -23,7 +24,9 @@
                 <action android:name="android.net.conn.CONNECTIIVITY_CHANGE"/>
             </intent-filter>
         </receiver>
-        <receiver android:name=".Receiver.RemindReceiver"
+
+        <receiver
+            android:name=".Receiver.RemindReceiver"
             android:enabled="true"
             android:exported="true">
         </receiver>
@@ -33,15 +36,29 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".home_main" />
+
+        <activity
+            android:name=".home_main"
+            android:launchMode="singleTop"
+            android:exported="true">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.speedwagon.tutorme.home_main" />
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
         <activity android:name=".LoginRegister.LoginRegister" />
+
         <activity
             android:name=".Discussion.DiscussionContent"
-            android:launchMode="singleTask" />
+            android:parentActivityName=".home_main"/>
+
         <service android:name=".Service.ServiceOnDiscussion" />
     </application>
 

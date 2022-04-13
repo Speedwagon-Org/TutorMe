@@ -1,5 +1,6 @@
 package com.speedwagon.tutorme.Explore
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -39,7 +40,7 @@ class ExploreAdapter(
         val itemdiscussion = DiscussionList[position]
         holder.imgAccount.setImageResource(itemdiscussion.ImageProfile)
         holder.tvUsername.text = itemdiscussion.Username
-        holder.tvQuestion.text = itemdiscussion.DiscussionContent
+        holder.tvQuestion.text = itemdiscussion.Text
         holder.itemView.setOnClickListener {
             onExploreClickListener.onExploreClicked(position,itemdiscussion)
         }

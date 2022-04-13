@@ -6,10 +6,8 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
 import com.speedwagon.tutorme.Explore.explore
 import com.speedwagon.tutorme.Home.home
 import com.speedwagon.tutorme.Notification.notification
@@ -22,17 +20,21 @@ class home_main : AppCompatActivity(), InternetReceiver.ConnectionReceiverListen
     private val notification = notification()
     private val profile = profile_nav()
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        //internet connection
         baseContext.registerReceiver(InternetReceiver(),
             IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION)
         )
-
         com.speedwagon.tutorme.application.instance.setConnectionListener(this)
+        //
         setContentView(R.layout.activity_home)
         replacefragment(home)
+        NAvbar()
+    }
 
+    private fun NAvbar(){
         val bottomnav= findViewById<BottomNavigationView>(R.id.bottomnav)
 
         bottomnav.setOnNavigationItemSelectedListener {
@@ -46,6 +48,7 @@ class home_main : AppCompatActivity(), InternetReceiver.ConnectionReceiverListen
             true
         }
     }
+
     private  fun replacefragment(fragment: Fragment){
         if(fragment !=null){
             val transaction = supportFragmentManager.beginTransaction()
@@ -60,5 +63,10 @@ class home_main : AppCompatActivity(), InternetReceiver.ConnectionReceiverListen
         else{
             Toast.makeText(this, "Not Connect", Toast.LENGTH_SHORT).show()
         }
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+        NAvbar()
     }
 }

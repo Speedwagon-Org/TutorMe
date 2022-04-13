@@ -1,30 +1,14 @@
 package com.speedwagon.tutorme
 
-import android.app.Dialog
-import android.content.ContentValues.TAG
-import android.content.Context
-import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.animation.Animation
-import android.view.animation.AnimationUtils
 import android.widget.Button
-import android.widget.EditText
 import android.widget.TextView
-import android.widget.Toast
-import androidx.fragment.app.FragmentTransaction
+import androidx.navigation.NavController
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.database.*
-import com.google.firebase.ktx.Firebase
-import com.speedwagon.tutorme.Discussion.DiscussionContent
-import com.speedwagon.tutorme.LoginRegister.DataUser
-import com.speedwagon.tutorme.databinding.FragmentProfileNavBinding
 
 private const val EXTRA_STATUS= "STATUS_STATE"
 private var someStateValue = "kosong"
@@ -76,6 +60,7 @@ class profile_nav : Fragment() {
         }
         return view
     }
+
     // onSaveInstanceState
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -83,6 +68,4 @@ class profile_nav : Fragment() {
         val usernameid= view?.findViewById<TextView>(R.id.usernameid)
         outState.putString(EXTRA_STATUS,usernameid?.text.toString())
     }
-
-
 }

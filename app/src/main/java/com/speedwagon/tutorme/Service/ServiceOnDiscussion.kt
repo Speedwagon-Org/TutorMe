@@ -1,6 +1,7 @@
 package com.speedwagon.tutorme.Service
 
 import android.app.*
+import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.os.IBinder
@@ -31,9 +32,10 @@ class ServiceOnDiscussion: Service() {
             flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         }
 
-        val pendingIntent = PendingIntent.getActivity(
-            this,0,notificationIntent,0
-        )
+        val pendingIntent: PendingIntent = TaskStackBuilder.create(this)
+            .addNextIntentWithParentStack(notificationIntent)
+            .getPendingIntent(110, PendingIntent.FLAG_UPDATE_CURRENT)
+
         val notification = Notification
             .Builder(this, Channel_ID)
             .setContentText("Ayo Kembali Ke Diskusi Mu!!!")

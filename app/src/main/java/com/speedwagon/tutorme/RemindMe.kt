@@ -43,7 +43,11 @@ class RemindMe: Fragment(){
         return inflater.inflate(R.layout.fragment_remindme,container,false)
     }
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
+        // alarm-Widget
+
         val mAlarmManager = activity?.getSystemService(Context.ALARM_SERVICE) as AlarmManager
         var mPendingIntent: PendingIntent? = null
         var sendIntent: Intent? = null
@@ -57,6 +61,7 @@ class RemindMe: Fragment(){
                 mAlarmManager.cancel(mPendingIntent)
                 mPendingIntent?.cancel()
             }
+
             val setRemindTime = Calendar.getInstance()
             val time = remindTime.text.split(":")
             setRemindTime.set(Calendar.HOUR_OF_DAY,time[0].toInt())
