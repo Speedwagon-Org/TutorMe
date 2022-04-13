@@ -19,7 +19,7 @@ import com.speedwagon.tutorme.databinding.DiscussionContentBinding
 import com.speedwagon.tutorme.home_main
 
 class DiscussionContent: AppCompatActivity() {
-    private lateinit var binding:DiscussionContentBinding
+    private lateinit var binding: DiscussionContentBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DiscussionContentBinding.inflate(layoutInflater)
@@ -30,25 +30,31 @@ class DiscussionContent: AppCompatActivity() {
         createNotificationChannel()
 
         //Buat intent eksplisit untuk di Aktivitas
-        val intentreply = Intent( this, DiscussionContent:: class.java).apply {
+        val intentreply = Intent(this, DiscussionContent::class.java).apply {
             flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         }
-        val pendingIntent: PendingIntent = PendingIntent.getActivity(this, 0, intentreply, PendingIntent.FLAG_IMMUTABLE)
+        val pendingIntent: PendingIntent =
+            PendingIntent.getActivity(this, 0, intentreply, PendingIntent.FLAG_IMMUTABLE)
 
-        val builder = NotificationCompat.Builder( this, Constants.Channel_ID)
+        val builder = NotificationCompat.Builder(this, Constants.Channel_ID)
             .setSmallIcon(R.drawable.icon_app)
             .setContentTitle("My notification")
             .setContentText("Hello Guys")
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-        //atur intent yang akan diaktifkan saat pengguna mengetuk notifikasi
+            //atur intent yang akan diaktifkan saat pengguna mengetuk notifikasi
             .setContentIntent(pendingIntent)
             .setAutoCancel(true)
 
-        binding.Back.setOnClickListener{
+        // show notifikasi
+        binding.shownotification.setOnClickListener {
+            with(NotificationManagerCompat.from(this)) {
+                notify(Constants.Notification_ID, builder.build())
+            }
+        }
+        // Tombol Kembali
+        binding.Back.setOnClickListener {
             StopTheService()
-            val homeMain = Intent(this, home_main::class.java)
-            startActivity(homeMain)
-            finish()
+            this.findActivity()?.onBackPressed()
         }
         //tampilan notifikasi
         binding.shownotification.setOnClickListener {
@@ -61,9 +67,9 @@ class DiscussionContent: AppCompatActivity() {
 
     private fun createNotificationChannel() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val descriptionText= "Test"
+            val descriptionText = "Test"
             val serviceChannel = NotificationChannel(
-                Constants.Channel_ID,"My Service Channel",
+                Constants.Channel_ID, "My Service Channel",
                 NotificationManager.IMPORTANCE_DEFAULT
             ).apply {
                 setShowBadge(true)
@@ -79,15 +85,15 @@ class DiscussionContent: AppCompatActivity() {
 
     private fun StopTheService() {
         Toast.makeText(this, "Service Stopped", Toast.LENGTH_SHORT).show()
-        stopService(Intent(this,ServiceOnDiscussion::class.java))
+        stopService(Intent(this, ServiceOnDiscussion::class.java))
     }
 
     private fun StartTheService() {
-        if(isMyserviceRunning(ServiceOnDiscussion::class.java)){
+        if (isMyserviceRunning(ServiceOnDiscussion::class.java)) {
             Toast.makeText(this, "Welcome Back !!!", Toast.LENGTH_SHORT).show()
-        }else{
+        } else {
             Toast.makeText(this, "Service Started", Toast.LENGTH_SHORT).show()
-            startService(Intent(this,ServiceOnDiscussion::class.java))
+            startService(Intent(this, ServiceOnDiscussion::class.java))
         }
     }
 
@@ -95,13 +101,17 @@ class DiscussionContent: AppCompatActivity() {
         val manager: ActivityManager = getSystemService(
             Context.ACTIVITY_SERVICE
         ) as ActivityManager
-        for(service: ActivityManager.RunningServiceInfo in
-        manager.getRunningServices(Integer.MAX_VALUE)){
-            if(mClass.name.equals(service.service.className)){
+        for (service: ActivityManager.RunningServiceInfo in
+        manager.getRunningServices(Integer.MAX_VALUE)) {
+            if (mClass.name.equals(service.service.className)) {
                 return true
             }
         }
         return false
+
+    }
+
+    private fun findActivity(): Activity? {
 
     }
 

@@ -1,6 +1,8 @@
 package com.speedwagon.tutorme
 
+import android.app.Activity
 import android.app.AlertDialog
+import android.content.ContextWrapper
 import android.os.Bundle
 import android.text.Editable
 import androidx.fragment.app.Fragment
@@ -13,6 +15,8 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.FragmentTransaction
+import androidx.navigation.fragment.findNavController
+import com.speedwagon.tutorme.Discussion.DiscussionContent
 
 
 class UpdateProfileFragment : Fragment() {
@@ -23,11 +27,26 @@ class UpdateProfileFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_update_profile, container, false)
-        val textView : TextView = view.findViewById(R.id.currentname)
+        val textView: TextView = view.findViewById(R.id.currentname)
 
         val args = this.arguments
         val inputdata = args?.get("data")
         textView.text = inputdata.toString()
+
+        view.findViewById<Button>(R.id.Back).setOnClickListener {
+            this.findActivity()?.onBackPressed()
+        }
+    }
+        //Tombol Kembali
+        private fun findActivity(): Activity{
+            var context = this
+            while (context is ContextWrapper){
+                if (context is Activity)
+                    return context
+                context = context.baseContext as DiscussionContent
+            }
+            return null
+        }
 
         val callback = object : OnBackPressedCallback(true){
             override fun handleOnBackPressed() {
@@ -46,7 +65,10 @@ class UpdateProfileFragment : Fragment() {
             fragment.arguments = bundle
             fragmentManager?.beginTransaction()?.replace(R.id.fragmentContainerView,fragment)?.commit()
         }
-
         return view
+    }
+
+    private fun findActivity(): Activity? {
+
     }
 }
