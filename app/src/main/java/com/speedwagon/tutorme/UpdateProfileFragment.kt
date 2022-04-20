@@ -46,6 +46,10 @@ class UpdateProfileFragment : Fragment() {
             fragment.arguments = bundle
             fragmentManager?.beginTransaction()?.replace(R.id.fragmentContainerView,fragment)?.commit()
         }
+        //test Espresso
+        view.findViewById<Button>(R.id.Test).setOnClickListener {
+            view.findViewById<TextView>(R.id.currentname).text = view.findViewById<EditText>(R.id.UsernameUpdateEditText).text
+        }
 
         return view
     }
