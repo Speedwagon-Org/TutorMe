@@ -28,7 +28,9 @@
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/TutorMe/app/src/main/res/drawable/background_profile_color.xml" value="0.3712962962962963" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/TutorMe/app/src/main/res/drawable/discussion_content.xml" value="0.2125" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/TutorMe/app/src/main/res/drawable/ic_baseline_arrow_back_24.xml" value="0.3296296296296296" />
+        <entry key="..\:/Users/Administrator/AndroidStudioProjects/TutorMe/app/src/main/res/drawable/ic_baseline_exit_to_app_24.xml" value="0.3828125" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/TutorMe/app/src/main/res/drawable/ic_baseline_send_24.xml" value="0.3828125" />
+        <entry key="..\:/Users/Administrator/AndroidStudioProjects/TutorMe/app/src/main/res/drawable/ic_baseline_settings_24.xml" value="0.3828125" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/TutorMe/app/src/main/res/drawable/ic_image.xml" value="0.3828125" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/TutorMe/app/src/main/res/drawable/ic_link.xml" value="0.3828125" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/TutorMe/app/src/main/res/drawable/ic_password.xml" value="0.3828125" />
@@ -44,12 +46,14 @@
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/TutorMe/app/src/main/res/layout/fragment_explore.xml" value="0.35280797101449274" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/TutorMe/app/src/main/res/layout/fragment_home.xml" value="0.25" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/TutorMe/app/src/main/res/layout/fragment_login.xml" value="0.31521739130434784" />
+        <entry key="..\:/Users/Administrator/AndroidStudioProjects/TutorMe/app/src/main/res/layout/fragment_logout_dialog.xml" value="0.35260416666666666" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/TutorMe/app/src/main/res/layout/fragment_notification.xml" value="0.35280797101449274" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/TutorMe/app/src/main/res/layout/fragment_people.xml" value="0.2" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/TutorMe/app/src/main/res/layout/fragment_profile_nav.xml" value="0.33" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/TutorMe/app/src/main/res/layout/fragment_profile_update.xml" value="0.33" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/TutorMe/app/src/main/res/layout/fragment_register.xml" value="0.31521739130434784" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/TutorMe/app/src/main/res/layout/fragment_remindme.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Administrator/AndroidStudioProjects/TutorMe/app/src/main/res/layout/fragment_succesfully_send.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/TutorMe/app/src/main/res/layout/fragment_test.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/TutorMe/app/src/main/res/layout/fragment_update_profile.xml" value="0.31023550724637683" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/TutorMe/app/src/main/res/layout/recycler_explore.xml" value="0.36666666666666664" />

@@ -38,9 +38,9 @@ class ExploreAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val itemdiscussion = DiscussionList[position]
-        holder.imgAccount.setImageResource(itemdiscussion.ImageProfile)
-        holder.tvUsername.text = itemdiscussion.Username
-        holder.tvQuestion.text = itemdiscussion.Text
+        holder.imgAccount.setImageResource(itemdiscussion.imageprofile)
+        holder.tvUsername.text = itemdiscussion.username
+        holder.tvQuestion.text = itemdiscussion.text
         holder.itemView.setOnClickListener {
             onExploreClickListener.onExploreClicked(position,itemdiscussion)
         }

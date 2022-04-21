@@ -1,25 +1,26 @@
 package com.speedwagon.tutorme.LoginRegister
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
-import androidx.core.app.NotificationManagerCompat
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.speedwagon.tutorme.R
-import com.speedwagon.tutorme.databinding.FragmentRegisterBinding
 
 class Register : Fragment() {
 
     private lateinit var Database: FirebaseDatabase
     private lateinit var databaseReference : DatabaseReference
+    private  lateinit var auth : FirebaseAuth
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_register, container, false)
     }
@@ -32,21 +33,40 @@ class Register : Fragment() {
 
         //input ke database// menadaftarkan user baru
         btnToRegister.setOnClickListener {
+            Database = FirebaseDatabase.getInstance("https://tutorme-78b90-default-rtdb.asia-southeast1.firebasedatabase.app/")
+            databaseReference = Database.getReference("User/")
+
+
+            val password = view.findViewById<EditText>(R.id.inputPassword).text.toString()
+            val email = view.findViewById<EditText>(R.id.inputEmail).text.toString()
             try {
-                if (AddNewUser()) {
-                    Toast.makeText(context, "Account Successfully Created!", Toast.LENGTH_SHORT).show()
+                auth = FirebaseAuth.getInstance()
+                auth.createUserWithEmailAndPassword(email,password).addOnCompleteListener {task ->
+                    if(task.isSuccessful){
+                        //menyimpan data username
+                        val userData = DataUser(
+                            username = view?.findViewById<EditText>(R.id.inputUsername)?.text.toString())
+                        databaseReference.child("${auth.uid}/").setValue(userData)
+                        //tampilkan toast berhasil register
+                        Toast.makeText(
+                            context,
+                            "Your account has been created",
+                            Toast.LENGTH_SHORT).show()
 
-                    val fragmentTransaction = activity?.supportFragmentManager?.beginTransaction()
-                    fragmentTransaction?.replace(R.id.logResLayout, Login())
-                    fragmentTransaction?.addToBackStack(null)
-                    fragmentTransaction?.commit()
-
-                } else {
-                    Toast.makeText(context, "Failed To Create Your Account Created!\nMake Sure You Fill It Correctly", Toast.LENGTH_SHORT).show()
+                        //user auto login
+                        val transaction = fragmentManager?.beginTransaction()
+                        transaction?.replace(R.id.fragmentContainerView,Login())?.commit()
+                    }
+                }.addOnFailureListener {exception->
+                    view.findViewById<TextView>(R.id.errorRegister).text=exception.localizedMessage
                 }
-            } catch (e: Exception) {
-                Toast.makeText(context, "Failed To Create Your Account Created!", Toast.LENGTH_SHORT).show()
+            }catch (e :Exception){
+                Toast.makeText(
+                    context,
+                    "make sure you fill all information needed!!!",
+                    Toast.LENGTH_SHORT).show()
             }
+
         }
 
         //tombol menuju fragment login
@@ -56,42 +76,5 @@ class Register : Fragment() {
             transaction.replace(R.id.logResLayout,loginFragment)
             transaction.commit()
         }
-    }
-
-    //check format email dan password
-    private fun emailCheck (email : String) : Boolean =  android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()
-    private fun passCheck (password : String) : Boolean {
-        if (password.length < 8){
-            Toast.makeText(context, "Minimum password length : 8", Toast.LENGTH_SHORT).show()
-            return false
-        }
-        return true
-    }
-
-    //input data dari register ke firebase
-    private fun AddNewUser(): Boolean {
-        Database = FirebaseDatabase.getInstance("https://tutorme-78b90-default-rtdb.asia-southeast1.firebasedatabase.app/")
-        databaseReference = Database.getReference("User/")
-
-        val userData = DataUser(
-            username = view?.findViewById<EditText>(R.id.inputUsername)?.text.toString(),
-            email = view?.findViewById<EditText>(R.id.inputEmail)?.text.toString(),
-            pass = view?.findViewById<EditText>(R.id.inputPassword)?.text.toString()
-        )
-        userData.apply {
-            if (
-                username?.replace("\\s".toRegex(), "") != "" &&
-                email?.replace("\\s".toRegex(), "") != "" &&
-                pass?.replace("\\s".toRegex(), "") != ""
-            ){
-                if (emailCheck(email.toString()) && passCheck(pass.toString())){
-                    databaseReference.child("user_$username/").setValue(userData)
-                    return true
-                } else {
-                    Toast.makeText(context, "Please Check Your Email or Password", Toast.LENGTH_SHORT).show()
-                }
-            }
-        }
-        return false
     }
 }

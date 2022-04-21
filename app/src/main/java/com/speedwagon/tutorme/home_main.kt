@@ -11,6 +11,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.speedwagon.tutorme.Explore.explore
 import com.speedwagon.tutorme.Home.home
 import com.speedwagon.tutorme.Notification.notification
+import com.speedwagon.tutorme.Profile.profile_nav
 import com.speedwagon.tutorme.Receiver.InternetReceiver
 
 class home_main : AppCompatActivity(), InternetReceiver.ConnectionReceiverListener{

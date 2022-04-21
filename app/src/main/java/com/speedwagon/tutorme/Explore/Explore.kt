@@ -52,12 +52,11 @@ class explore : Fragment(), ExploreAdapter.OnExploreClickListener{
                         val categories = ExploreItem()
                         with(categories){
                             try {
-                                Username = ContentObj["Username"] as String
-                                Text = ContentObj["Text"] as String
+                                username = ContentObj["username"] as String
+                                text = ContentObj["text"] as String
                             } catch (e : Exception){
                                 Toast.makeText(context, "$e", Toast.LENGTH_SHORT).show()
                             }
-
                         }
                         discussionlist.add(categories)
                     }
