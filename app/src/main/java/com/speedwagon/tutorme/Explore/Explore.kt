@@ -1,22 +1,17 @@
 package com.speedwagon.tutorme.Explore
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import android.widget.Toast
-import androidx.loader.app.LoaderManager
-import androidx.loader.content.Loader
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.speedwagon.tutorme.Discussion.DiscussionContent
-import com.speedwagon.tutorme.Discussion.ItemDiscussion
 import com.speedwagon.tutorme.R
 
 class explore : Fragment(), ExploreAdapter.OnExploreClickListener{
@@ -26,13 +21,13 @@ class explore : Fragment(), ExploreAdapter.OnExploreClickListener{
     //variable untuk implementasi database data
     private lateinit var discussionlist: ArrayList<ExploreItem>
     private lateinit var discussionRecyclerView: RecyclerView
-    private lateinit var database  : DatabaseReference
+    private lateinit var database  : FirebaseDatabase
+    private lateinit var databaseReference : DatabaseReference
+    private lateinit var auth: FirebaseAuth
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val intent = Intent(context,explore::class.java)
-        val DiscussionDetail = intent.getParcelableExtra<ItemDiscussion>("ItemDiscussion")
 
         discussionRecyclerView = view?.findViewById<RecyclerView>(R.id.recycleExplore)
         discussionlist = arrayListOf()
@@ -41,9 +36,10 @@ class explore : Fragment(), ExploreAdapter.OnExploreClickListener{
         }
     //fetchdata dari firebase
     private fun fetchData() {
+        auth = FirebaseAuth.getInstance()
         database = FirebaseDatabase.getInstance("https://tutorme-78b90-default-rtdb.asia-southeast1.firebasedatabase.app/")
-            .getReference("Content")
-        database.addValueEventListener(object : ValueEventListener{
+        databaseReference = database.getReference("Content")
+        databaseReference.addValueEventListener(object : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
                 if(snapshot.exists()){
                     discussionlist.clear()

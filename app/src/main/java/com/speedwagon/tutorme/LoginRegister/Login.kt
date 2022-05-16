@@ -26,12 +26,14 @@ class Login : Fragment() {
         val v = inflater.inflate(R.layout.fragment_login, container, false)
         val btnToReg = v.findViewById<Button>(R.id.toRegister)
         val btnToHome = v.findViewById<Button>(R.id.buttonLogin)
+        
 
         //check apakah user telah login sebelumnya
         val user = Firebase.auth.currentUser
         if (user != null) {
             val intent = Intent(context, home_main::class.java)
             startActivity(intent)
+            activity?.finish()
         }
 
         //register
@@ -52,6 +54,8 @@ class Login : Fragment() {
                     if (task.isSuccessful){
                         val intent = Intent(context, home_main::class.java)
                         startActivity(intent)
+                        activity?.finish()
+
                     }
                 }.addOnFailureListener { exception ->
                     view?.findViewById<TextView>(R.id.Loginerror)?.text=exception.localizedMessage

@@ -11,11 +11,13 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import androidx.navigation.NavController
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.speedwagon.tutorme.LoginRegister.LoginRegister
+import com.speedwagon.tutorme.LoginRegister.Register
 import com.speedwagon.tutorme.LogoutDialog
 import com.speedwagon.tutorme.R
 import com.speedwagon.tutorme.RemindMe
@@ -43,36 +45,19 @@ class profile_nav : Fragment() {
         val textView: TextView = view.findViewById(R.id.usernameid)
         textView.text = savedInstanceState?.getString(EXTRA_STATUS)
 
-        if(this.arguments!=null){
-            val args = this.arguments
-            val inputdata = args?.get("data")
-            textView.text = inputdata.toString()
-        }
-
-        //update username
-        val btn = view.findViewById<Button>(R.id.UpdateProfileBtn)
-        btn.setOnClickListener {
-            val currentUsername: TextView = view.findViewById(R.id.usernameid)
-            val input = currentUsername.text.toString()
-            val bundle = Bundle()
-            bundle.putString("data", input)
-            val fragment = UpdateProfileFragment()
-            fragment.arguments = bundle
-            fragmentManager?.beginTransaction()?.replace(R.id.fragmentContainerView, fragment)
-                ?.commit()
-        }
         //Floating action button
         val fab = view.findViewById<FloatingActionButton>(R.id.fab)
         val remind = view.findViewById<FloatingActionButton>(R.id.fab_remind)
         val logout = view.findViewById<FloatingActionButton>(R.id.LogOut)
         fab.setOnClickListener {
             clicked = !clicked
-            if(!clicked){
+            if(clicked){
                 remind.visibility = View.VISIBLE
                 logout.visibility = View.VISIBLE
             }
             else{
                 remind.visibility = View.INVISIBLE
+                logout.visibility = View.INVISIBLE
             }
         }
         remind.setOnClickListener{
@@ -99,21 +84,5 @@ class profile_nav : Fragment() {
         auth = FirebaseAuth.getInstance()
         Database = FirebaseDatabase.getInstance("https://tutorme-78b90-default-rtdb.asia-southeast1.firebasedatabase.app/")
         databaseReference = Database.getReference("User/")
-        databaseReference.addValueEventListener(object :ValueEventListener{
-            override fun onDataChange(snapshot: DataSnapshot) {
-                snapshot.children.forEach{
-                    if(snapshot.exists()){
-                        val userObj = it.value as HashMap <*,*>
-                        if(auth.currentUser!!.uid==it.key){
-                            view?.findViewById<TextView>(R.id.usernameid)?.text = userObj["username"] as String
-                        }
-                    }
-                }
-            }
-            override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
-            }
-
-        })
     }
 }

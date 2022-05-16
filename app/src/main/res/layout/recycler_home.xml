@@ -16,7 +16,7 @@
         app:cardCornerRadius="9dp">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="horizontal">
             <ImageView
                 android:id="@+id/imgAccount"
@@ -26,7 +26,7 @@
                 android:src="@drawable/ic_account"/>
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="vertical">
 
                 <TextView
@@ -44,6 +44,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginEnd="10dp"
                     android:text="How do I open a new fragment from another fragment?"
                     android:textColor="@color/black"
                     android:textSize="12sp"/>

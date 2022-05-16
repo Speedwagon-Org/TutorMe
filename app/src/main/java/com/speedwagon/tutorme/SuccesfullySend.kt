@@ -1,5 +1,7 @@
 package com.speedwagon.tutorme
 
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -14,7 +16,7 @@ class SuccesfullySend : DialogFragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_succesfully_send, container, false)
-
+        dialog?.window?.setBackgroundDrawableResource(android.R.color.transparent)
         return view
     }
 }

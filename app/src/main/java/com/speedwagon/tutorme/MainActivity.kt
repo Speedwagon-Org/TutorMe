@@ -14,6 +14,7 @@ class MainActivity : AppCompatActivity(){
         Handler(Looper.getMainLooper()).postDelayed({
             val logInIntent = Intent(this@MainActivity, LoginRegister::class.java)
             startActivity(logInIntent)
+            finish()
         }, 400)
     }
 }
