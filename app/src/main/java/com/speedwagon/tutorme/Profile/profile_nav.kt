@@ -84,5 +84,21 @@ class profile_nav : Fragment() {
         auth = FirebaseAuth.getInstance()
         Database = FirebaseDatabase.getInstance("https://tutorme-78b90-default-rtdb.asia-southeast1.firebasedatabase.app/")
         databaseReference = Database.getReference("User/")
+        databaseReference.addValueEventListener(object :ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+                snapshot.children.forEach{
+                    if(snapshot.exists()){
+                        val userObj = it.value as HashMap <*,*>
+                        if(auth.currentUser!!.uid==it.key){
+                            view?.findViewById<TextView>(R.id.usernameid)?.text = userObj["username"] as String
+                        }
+                    }
+                }
+            }
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+
+        })
     }
 }

@@ -41,6 +41,36 @@ class home : Fragment(), Homeadapter.OnHomeClickListener{
         auth = FirebaseAuth.getInstance()
         database = FirebaseDatabase.getInstance("https://tutorme-78b90-default-rtdb.asia-southeast1.firebasedatabase.app/")
         databaseReference = database.getReference("Content")
+        databaseReference.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if(snapshot.exists()){
+                    Homeitem.clear()
+                    snapshot.children.forEach {
+                        val ContentObj = it.value as HashMap<*, *>
+                        val categories = HomeItem()
+                        with(categories){
+                            try {
+                                if(ContentObj["idUser"] == auth.uid.toString()){
+                                    if(ContentObj["username"] != null){
+                                        username = ContentObj["username"] as String
+                                        text = ContentObj["text"] as String
+                                    }
+                                }
+                            } catch (e : Exception){
+                                Toast.makeText(context, "$e", Toast.LENGTH_SHORT).show()
+                            }
+                        }
+                        Homeitem.add(categories)
+                    }
+                    discussionRecyclerView.adapter = Homeadapter(Homeitem, this@home)
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+
+        })
     }
 
     override fun onHomeClicked(position: Int, item: HomeItem) {

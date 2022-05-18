@@ -1,5 +1,6 @@
 package com.speedwagon.tutorme.LoginRegister
 
+
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -17,16 +18,20 @@ import com.google.firebase.ktx.Firebase
 import com.speedwagon.tutorme.R
 import com.speedwagon.tutorme.home_main
 
+private val PrefFileName = "MYFILEPREF01"
+
 class Login : Fragment() {
 
     private  lateinit var auth: FirebaseAuth
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        // mengembalikan email yang telah login (sharedpreference)
+        val sharePrefHelper = rememberEmail(requireContext(), PrefFileName)
+        view?.findViewById<EditText>(R.id.inputEmail)?.setText(sharePrefHelper.email)
 
         val v = inflater.inflate(R.layout.fragment_login, container, false)
         val btnToReg = v.findViewById<Button>(R.id.toRegister)
         val btnToHome = v.findViewById<Button>(R.id.buttonLogin)
-        
 
         //check apakah user telah login sebelumnya
         val user = Firebase.auth.currentUser
@@ -45,6 +50,10 @@ class Login : Fragment() {
         }
         //login
         btnToHome.setOnClickListener {
+
+            //menyimpan email (sharedpreference)
+            sharePrefHelper.email = view?.findViewById<EditText>(R.id.inputEmail)?.text.toString()
+
             val email = v.findViewById<EditText>(R.id.inputEmail).text.toString()
             val password = v.findViewById<EditText>(R.id.inputPassword).text.toString()
             try {
