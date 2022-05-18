@@ -6,10 +6,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.google.firebase.auth.FirebaseAuth
@@ -25,9 +22,8 @@ class Login : Fragment() {
     private  lateinit var auth: FirebaseAuth
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        // mengembalikan email yang telah login (sharedpreference)
+        //inisialisasi shared reference
         val sharePrefHelper = rememberEmail(requireContext(), PrefFileName)
-        view?.findViewById<EditText>(R.id.inputEmail)?.setText(sharePrefHelper.email)
 
         val v = inflater.inflate(R.layout.fragment_login, container, false)
         val btnToReg = v.findViewById<Button>(R.id.toRegister)
@@ -39,6 +35,16 @@ class Login : Fragment() {
             val intent = Intent(context, home_main::class.java)
             startActivity(intent)
             activity?.finish()
+        }
+
+        v.findViewById<Switch>(R.id.remember).setOnCheckedChangeListener { buttonView, isChecked ->
+            if (isChecked) {
+                // mengembalikan email yang telah login (sharedpreference)
+                view?.findViewById<EditText>(R.id.inputEmail)?.setText(sharePrefHelper.email)
+            }
+            else{
+                view?.findViewById<EditText>(R.id.inputEmail)?.setText("")
+            }
         }
 
         //register
