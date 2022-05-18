@@ -50,14 +50,16 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:background="@color/white"
-                android:src="@drawable/ic_image" />
+                android:src="@drawable/ic_image"
+                tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
             <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
                 android:background="@color/white"
-                android:src="@drawable/ic_link" />
+                android:src="@drawable/ic_link"
+                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
             <Button
                 android:id="@+id/Send"
@@ -65,12 +67,12 @@
                 android:layout_height="40dp"
                 android:layout_marginLeft="200dp"
                 android:background="@color/white"
-                android:text="Kirim" />
+                android:text="Kirim"
+                tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />
         </LinearLayout>
     </LinearLayout>
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 
 
