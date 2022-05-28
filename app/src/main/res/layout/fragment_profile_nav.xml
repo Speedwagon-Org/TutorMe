@@ -28,16 +28,18 @@
                 android:orientation="vertical">
 
                 <androidx.cardview.widget.CardView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="35dp"
                     android:layout_marginBottom="20dp"
                     app:cardCornerRadius="50dp">
 
                     <ImageView
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
+                        android:id="@+id/pfp_profile_nav"
+                        android:layout_width="fill_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitXY"
                         android:background="@drawable/ic_baseline_person_24" />
                 </androidx.cardview.widget.CardView>
 
@@ -66,6 +68,13 @@
             android:textStyle="bold"
             android:text="Username"
             android:textSize="20sp" />
+        <Button
+            android:id="@+id/EditProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:text="Edit Profile"/>
 
     </LinearLayout>
 

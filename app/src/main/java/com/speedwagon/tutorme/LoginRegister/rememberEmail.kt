@@ -11,7 +11,7 @@ class rememberEmail(context: Context, name: String){
     }
     inline fun SharedPreferences.editMe(operation: (SharedPreferences.Editor) -> Unit) {
         val editMe = edit()
-        operation(editMe) //editMe.apply()
+        operation(editMe)
         editMe.commit()
     }
     var email : String

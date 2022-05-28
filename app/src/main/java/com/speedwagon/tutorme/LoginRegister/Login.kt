@@ -37,9 +37,9 @@ class Login : Fragment() {
             activity?.finish()
         }
 
+        // mengembalikan email yang telah login (sharedpreference)
         v.findViewById<Switch>(R.id.remember).setOnCheckedChangeListener { buttonView, isChecked ->
             if (isChecked) {
-                // mengembalikan email yang telah login (sharedpreference)
                 view?.findViewById<EditText>(R.id.inputEmail)?.setText(sharePrefHelper.email)
             }
             else{
