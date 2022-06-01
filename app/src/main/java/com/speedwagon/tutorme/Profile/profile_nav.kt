@@ -1,32 +1,27 @@
 package com.speedwagon.tutorme.Profile
 
-import android.app.Dialog
-import android.content.Intent
+import android.annotation.SuppressLint
+import android.database.Cursor
 import android.graphics.BitmapFactory
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.TextView
-import androidx.fragment.app.DialogFragment
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentTransaction
-import androidx.navigation.NavController
+import android.widget.*
+import androidx.fragment.app.Fragment
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
+import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.google.firebase.storage.FirebaseStorage
-import com.speedwagon.tutorme.LoginRegister.LoginRegister
-import com.speedwagon.tutorme.LoginRegister.Register
 import com.speedwagon.tutorme.LogoutDialog
 import com.speedwagon.tutorme.R
 import com.speedwagon.tutorme.RemindMe
-import com.speedwagon.tutorme.home_main
+import java.io.BufferedReader
 import java.io.File
+import java.lang.Exception
+
 
 private const val EXTRA_STATUS= "STATUS_STATE"
 private var someStateValue = "kosong"
@@ -34,15 +29,18 @@ private var clicked = false
 
 class profile_nav : Fragment() {
 
+
     private  lateinit var auth: FirebaseAuth
     private lateinit var Database: FirebaseDatabase
     private lateinit var databaseReference : DatabaseReference
     private lateinit var userReference : DatabaseReference
 
+    @SuppressLint("Range")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         //username dari firebase
         FetchDataUser()
 
@@ -50,6 +48,27 @@ class profile_nav : Fragment() {
         val view = inflater.inflate(R.layout.fragment_profile_nav, container, false)
         val textView: TextView = view.findViewById(R.id.usernameid)
         textView.text = savedInstanceState?.getString(EXTRA_STATUS)
+
+        //sqlite
+        try {
+            val deskripsi : TextView? = view?.findViewById(R.id.deskripsi)
+            val db = DBhelper(this.requireContext(), null)
+            val cursor = db.fetch()
+
+            if(cursor!!.moveToFirst())
+            {
+                deskripsi?.text = (cursor.getString(cursor.getColumnIndex(DBhelper.DES)))
+            }
+            else
+            {
+                deskripsi?.text = "Halo !!! Apa motivasi mu!!"
+            }
+        }catch (e: java.lang.Exception){
+            Toast.makeText(
+                context,
+                "Error load description",
+                Toast.LENGTH_SHORT).show()
+        }
 
         //to update profile
         val btn = view?.findViewById<Button>(R.id.EditProfile)

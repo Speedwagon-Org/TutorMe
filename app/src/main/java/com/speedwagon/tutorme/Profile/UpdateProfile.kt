@@ -1,8 +1,11 @@
 package com.speedwagon.tutorme.Profile
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.ContentValues.TAG
+import android.content.Context
 import android.content.Intent
+import android.database.Cursor
 import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
@@ -15,6 +18,7 @@ import android.widget.*
 import androidx.activity.OnBackPressedCallback
 import androidx.cardview.widget.CardView
 import com.google.android.material.snackbar.Snackbar
+import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.google.firebase.storage.FirebaseStorage
@@ -36,18 +40,48 @@ private const val REQUEST_CODE_IMAGE_PICK = 0
 
 class UpdateProfile : Fragment() {
 
+
     private  lateinit var auth: FirebaseAuth
     private lateinit var userReference : DatabaseReference
     private var imgUri : Uri? = null
 
+    @SuppressLint("Range", "CutPasteId")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_update_profile, container, false)
         val textView : TextView = view.findViewById(R.id.currentname)
+        var updatedeskripsi =0
 
+        //fect deskripsi
+        try {
+            val deskripsi = view?.findViewById<TextInputEditText>(R.id.deskripsiprofile)
+            val db = DBhelper(this.requireContext(), null)
+            val cursor = db.fetch()
+
+            if(cursor!!.moveToFirst())
+            {
+                deskripsi?.setText(cursor.getString(cursor.getColumnIndex(DBhelper.DES)))
+                updatedeskripsi = 1
+            }
+            else
+            {
+                Toast.makeText(
+                    context,
+                    "Description null",
+                    Toast.LENGTH_SHORT).show()
+            }
+        }catch (e: java.lang.Exception){
+            Toast.makeText(
+                context,
+                "Error load description",
+                Toast.LENGTH_SHORT).show()
+        }
+
+        //save gambar sesuai uid dan masuk ke firebase
         val savepfp = view?.findViewById<Button>(R.id.savepfp)
         savepfp?.setOnClickListener{
             auth = FirebaseAuth.getInstance()
@@ -75,6 +109,7 @@ class UpdateProfile : Fragment() {
                 "Your username has been change",
                 Toast.LENGTH_SHORT).show()
         }
+
         //Pick picture
         val editProfilePicture = view.findViewById<ImageView>(R.id.editpfp)
         editProfilePicture.setOnClickListener{
@@ -83,7 +118,7 @@ class UpdateProfile : Fragment() {
                 startActivityForResult(it, REQUEST_CODE_IMAGE_PICK)
             }
         }
-
+        //load foto profile
         val pfp = view?.findViewById<ImageView>(R.id.pfp)
         auth = FirebaseAuth.getInstance()
         userReference = FirebaseDatabase.getInstance("https://tutorme-78b90-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("User")
@@ -112,6 +147,24 @@ class UpdateProfile : Fragment() {
 
         })
 
+        //sqlite deskripsi
+        val DeskripsiUpdate = view.findViewById<Button>(R.id.ConfirmDeskripsi)
+        DeskripsiUpdate.setOnClickListener {
+            val db = DBhelper(this.requireContext(), null)
+
+            val Isideskripsi = view.findViewById<EditText>(R.id.deskripsiprofile)
+
+            val deskripsi = Isideskripsi.text.toString()
+            if(updatedeskripsi ==1){
+                db.update(deskripsi)
+            }
+            else{
+                db.SaveProfiledata(deskripsi)
+            }
+
+
+        }
+
 
         return view
     }
@@ -124,7 +177,7 @@ class UpdateProfile : Fragment() {
 
     }
 
-    // Open File Explorer handler
+    // Open File Explorer handler (lanjutan dari pick picture)
     @Deprecated("Deprecated in Java")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)

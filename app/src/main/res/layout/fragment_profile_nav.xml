@@ -68,11 +68,34 @@
             android:textStyle="bold"
             android:text="Username"
             android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/as"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:textSize="15sp"
+            android:text=" Deskripsi Profile    :" />
+
+        <TextView
+            android:id="@+id/deskripsi"
+            android:layout_width="315dp"
+            android:layout_height="118dp"
+            android:drawablePadding="12dp"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:paddingTop="3dp"
+            android:textSize="16sp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/edittext_border" />
+
         <Button
             android:id="@+id/EditProfile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
             android:text="Edit Profile"/>
 
@@ -86,15 +109,15 @@
         android:clickable="true"
         android:focusable="true"
         android:src="@drawable/ic_baseline_exit_to_app_24"
+        android:tint="@color/white"
         android:visibility="invisible"
         app:backgroundTint="@color/spray"
         app:layout_constraintBottom_toTopOf="@+id/fab_remind"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.954"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:layout_constraintVertical_bias="1.0"
-        android:tint="@color/white"/>
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.989" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_remind"
@@ -111,8 +134,6 @@
         app:layout_constraintEnd_toEndOf="@+id/fab"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:layout_constraintVertical_bias="1.0"
         app:tint="@color/white" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -130,5 +151,7 @@
         app:layout_constraintHorizontal_bias="0.954"
         app:layout_constraintStart_toStartOf="parent"
         app:tint="@color/white" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
