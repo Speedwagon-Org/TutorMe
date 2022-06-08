@@ -57,7 +57,7 @@ class Login : Fragment() {
         //login
         btnToHome.setOnClickListener {
 
-            //menyimpan email (sharedpreference)
+            //menyimpan email saat login (sharedpreference)
             sharePrefHelper.email = view?.findViewById<EditText>(R.id.inputEmail)?.text.toString()
 
             val email = v.findViewById<EditText>(R.id.inputEmail).text.toString()

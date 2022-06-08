@@ -21,23 +21,25 @@ class RemindMe: Fragment(){
     private var cal = Calendar.getInstance()
 
     @SuppressLint("SimpleDateFormat")
-    private fun setTimeFormat() : String{
-        val format = "HH:mm"
-        val sdf = SimpleDateFormat(format)
-        return sdf.format(cal.time)
-    }
+    //set text timer setelah dipilih waktunya(Timer belum berjalan)
     private fun remindTimePicker() :TimePickerDialog.OnTimeSetListener{
         val timeSetListener = object : TimePickerDialog.OnTimeSetListener{
             override fun onTimeSet(Tm: TimePicker?, hourOfDay: Int, minute: Int) {
                 cal.set(Calendar.HOUR_OF_DAY,hourOfDay)
                 cal.set(Calendar.MINUTE,minute)
                 val remindTime = view?.findViewById<TextView>(R.id.remindTime)
-                remindTime?.text = setTimeFormat()
+                remindTime?.text = setTimeFormat() // lanjut ke setTimeFormat
             }
 
         }
         return timeSetListener
     }
+    private fun setTimeFormat() : String{
+        val format = "HH:mm"
+        val sdf = SimpleDateFormat(format)
+        return sdf.format(cal.time)
+    }
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.fragment_remindme,container,false)
@@ -45,8 +47,14 @@ class RemindMe: Fragment(){
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-
-        // alarm-Widget
+        // memanggil Time Picker Dialog
+        val stp = view.findViewById<Button>(R.id.showTimePicker)
+        stp.setOnClickListener {
+            TimePickerDialog(context,remindTimePicker(),
+                cal.get(Calendar.HOUR_OF_DAY),
+                cal.get(Calendar.MINUTE),
+                true
+            ).show() }
 
         val mAlarmManager = activity?.getSystemService(Context.ALARM_SERVICE) as AlarmManager
         var mPendingIntent: PendingIntent? = null
@@ -55,7 +63,7 @@ class RemindMe: Fragment(){
         val remindTime = view.findViewById<TextView>(R.id.remindTime)
         val remindMessage = view.findViewById<EditText>(R.id.remindMessage)
         val cancelRemind = view.findViewById<Button>(R.id.cancelRemind)
-        val stp = view.findViewById<Button>(R.id.showTimePicker)
+
         setRemindMe.setOnClickListener{
             if(mPendingIntent!=null){
                 mAlarmManager.cancel(mPendingIntent)
@@ -74,6 +82,7 @@ class RemindMe: Fragment(){
             mAlarmManager.set(AlarmManager.RTC, setRemindTime.timeInMillis,mPendingIntent)
             Toast.makeText(context,"Remind Me has been set to ${remindTime.text}:00",Toast.LENGTH_SHORT).show()
         }
+        //cancel timer
         cancelRemind.setOnClickListener {
             if(mPendingIntent!=null){
                 mAlarmManager.cancel(mPendingIntent)
@@ -81,12 +90,6 @@ class RemindMe: Fragment(){
                 Toast.makeText(context,"Remind Me canceled.",Toast.LENGTH_SHORT).show()
             }
         }
-        stp.setOnClickListener {
-            TimePickerDialog(context,remindTimePicker(),
-            cal.get(Calendar.HOUR_OF_DAY),
-            cal.get(Calendar.MINUTE),
-            true
-            ).show() }
     }
 }
 

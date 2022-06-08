@@ -110,7 +110,7 @@ class UpdateProfile : Fragment() {
                 Toast.LENGTH_SHORT).show()
         }
 
-        //Pick picture
+        //ambil gambar dari storage
         val editProfilePicture = view.findViewById<ImageView>(R.id.editpfp)
         editProfilePicture.setOnClickListener{
             Intent(Intent.ACTION_GET_CONTENT).also{
@@ -155,6 +155,8 @@ class UpdateProfile : Fragment() {
             val Isideskripsi = view.findViewById<EditText>(R.id.deskripsiprofile)
 
             val deskripsi = Isideskripsi.text.toString()
+            //pengecheckan apakah deskripsi sudah ada?
+            //jika ada maka akan diupdate, jika tidak maka akan diinsert
             if(updatedeskripsi ==1){
                 db.update(deskripsi)
             }
@@ -177,7 +179,7 @@ class UpdateProfile : Fragment() {
 
     }
 
-    // Open File Explorer handler (lanjutan dari pick picture)
+    // Open File Explorer handler (set gambar ke imgview)
     @Deprecated("Deprecated in Java")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)

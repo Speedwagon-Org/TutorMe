@@ -22,19 +22,19 @@ class NameChangeTest {
 
     var activityTest =  ActivityTestRule(home_main::class.java)
 
-    //@Before
-    //fun setup(){
-        //var scenario: FragmentScenario<UpdateProfileFragment>
-        //scenario = launchFragmentInContainer(themeResId = R.style.Theme_TutorMe)
-        //scenario.moveToState(Lifecycle.State.STARTED)
-    //}
+//    @Before
+//    fun setup(){
+//        var scenario: FragmentScenario<UpdateProfileFragment>
+//        scenario = launchFragmentInContainer(themeResId = R.style.Theme_TutorMe)
+//        scenario.moveToState(Lifecycle.State.STARTED)
+//    }
 
-    //@Test
-    //fun ChangeNameProfile(){
-        //onView(withId(R.id.UsernameUpdateEditText)).perform(ViewActions.typeText("Test"))
-        //onView(withId(R.id.Test)).perform(ViewActions.click())
-        //onView(withId(R.id.currentname)).check(matches(withText("Test")))
-   // }
+//    @Test
+//    fun ChangeNameProfile(){
+//        onView(withId(R.id.UsernameUpdateEditText)).perform(ViewActions.typeText("Test"))
+//        onView(withId(R.id.Test)).perform(ViewActions.click())
+//        onView(withId(R.id.currentname)).check(matches(withText("Test")))
+//    }
 
     //masih error
     //@Test

@@ -12,7 +12,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.speedwagon.tutorme.Discussion.DiscussionContent
+import com.speedwagon.tutorme.Discussion.PreLoad
 import com.speedwagon.tutorme.R
+import com.speedwagon.tutorme.RemindMe
 
 class explore : Fragment(), ExploreAdapter.OnExploreClickListener{
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -68,10 +70,14 @@ class explore : Fragment(), ExploreAdapter.OnExploreClickListener{
     }
 
     override fun onExploreClicked(position: Int, item: ExploreItem) {
-        val intent = Intent(context, DiscussionContent::class.java).apply {
-            putExtra("ExploreItem", item)
-        }
-        startActivity(intent)
+//        val intent = Intent(context, DiscussionContent::class.java).apply {
+//        putExtra("ExploreItem", item)
+//        }
+//        startActivity(intent)
+
+        val Preload = PreLoad()
+        val transaction = fragmentManager?.beginTransaction()
+        transaction?.replace(R.id.fragmentContainerView,Preload)?.commit()
     }
 
 

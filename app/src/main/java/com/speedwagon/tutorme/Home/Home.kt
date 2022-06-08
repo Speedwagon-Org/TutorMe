@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.speedwagon.tutorme.Discussion.DiscussionContent
+import com.speedwagon.tutorme.Discussion.PreLoad
 import com.speedwagon.tutorme.R
 
 class home : Fragment(), Homeadapter.OnHomeClickListener{
@@ -74,9 +75,13 @@ class home : Fragment(), Homeadapter.OnHomeClickListener{
     }
 
     override fun onHomeClicked(position: Int, item: HomeItem) {
-        val intent = Intent(context, DiscussionContent::class.java).apply {
-            putExtra("HomeItem", item)
-        }
-        startActivity(intent)
+//        val intent = Intent(context, DiscussionContent::class.java).apply {
+//            putExtra("HomeItem", item)
+//        }
+//        startActivity(intent)
+
+        val Preload = PreLoad()
+        val transaction = fragmentManager?.beginTransaction()
+        transaction?.replace(R.id.fragmentContainerView,Preload)?.commit()
     }
 }

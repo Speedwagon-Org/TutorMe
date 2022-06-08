@@ -102,7 +102,6 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:layout_marginEnd="32dp"
-            android:layout_marginTop="12dp"
             android:text="Save Change Name"
             tools:ignore="InvalidId" />
 
@@ -110,10 +109,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="5dp"
             android:textSize="15sp"
-            android:text=" Deskripsi Profile    :"
-            android:layout_marginBottom="10dp"/>
+            android:text=" Deskripsi Profile    :"/>
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
