@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Kuliah/Semester 6/Pemograman Mobile Lanjutan/TutorMe/app/src/main/res/drawable-v21/app_widget_background.xml" value="0.2595" />
+        <entry key="..\:/Kuliah/Semester 6/Pemograman Mobile Lanjutan/TutorMe/app/src/main/res/drawable-v21/app_widget_inner_view_background.xml" value="0.2595" />
         <entry key="..\:/Kuliah/Semester 6/Pemograman Mobile Lanjutan/TutorMe/app/src/main/res/drawable/background_profile_color.xml" value="0.25833333333333336" />
         <entry key="..\:/Kuliah/Semester 6/Pemograman Mobile Lanjutan/TutorMe/app/src/main/res/drawable/border.xml" value="0.2703125" />
         <entry key="..\:/Kuliah/Semester 6/Pemograman Mobile Lanjutan/TutorMe/app/src/main/res/drawable/ic_add.xml" value="0.25833333333333336" />
@@ -14,6 +16,7 @@
         <entry key="..\:/Kuliah/Semester 6/Pemograman Mobile Lanjutan/TutorMe/app/src/main/res/layout/activity_login_register.xml" value="0.25416666666666665" />
         <entry key="..\:/Kuliah/Semester 6/Pemograman Mobile Lanjutan/TutorMe/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
         <entry key="..\:/Kuliah/Semester 6/Pemograman Mobile Lanjutan/TutorMe/app/src/main/res/layout/activity_remindme.xml" value="0.264" />
+        <entry key="..\:/Kuliah/Semester 6/Pemograman Mobile Lanjutan/TutorMe/app/src/main/res/layout/discussion_content.xml" value="0.22826086956521738" />
         <entry key="..\:/Kuliah/Semester 6/Pemograman Mobile Lanjutan/TutorMe/app/src/main/res/layout/fragment_create_discussion.xml" value="0.25" />
         <entry key="..\:/Kuliah/Semester 6/Pemograman Mobile Lanjutan/TutorMe/app/src/main/res/layout/fragment_explore.xml" value="0.2421875" />
         <entry key="..\:/Kuliah/Semester 6/Pemograman Mobile Lanjutan/TutorMe/app/src/main/res/layout/fragment_login.xml" value="0.264" />
@@ -22,9 +25,12 @@
         <entry key="..\:/Kuliah/Semester 6/Pemograman Mobile Lanjutan/TutorMe/app/src/main/res/layout/fragment_remindme.xml" value="0.4" />
         <entry key="..\:/Kuliah/Semester 6/Pemograman Mobile Lanjutan/TutorMe/app/src/main/res/layout/fragment_succesfully_send.xml" value="0.23278985507246377" />
         <entry key="..\:/Kuliah/Semester 6/Pemograman Mobile Lanjutan/TutorMe/app/src/main/res/layout/fragment_update_profile.xml" value="0.4" />
+        <entry key="..\:/Kuliah/Semester 6/Pemograman Mobile Lanjutan/TutorMe/app/src/main/res/layout/home_widget.xml" value="0.4" />
+        <entry key="..\:/Kuliah/Semester 6/Pemograman Mobile Lanjutan/TutorMe/app/src/main/res/layout/home_widget_configure.xml" value="0.25416666666666665" />
         <entry key="..\:/Kuliah/Semester 6/Pemograman Mobile Lanjutan/TutorMe/app/src/main/res/layout/recycler_explore.xml" value="0.2421875" />
         <entry key="..\:/Kuliah/Semester 6/Pemograman Mobile Lanjutan/TutorMe/app/src/main/res/layout/recycler_home.xml" value="0.2421875" />
         <entry key="..\:/Kuliah/Semester 6/Pemograman Mobile Lanjutan/TutorMe/app/src/main/res/layout/recycler_notification.xml" value="0.2421875" />
+        <entry key="..\:/Kuliah/Semester 6/Pemograman Mobile Lanjutan/TutorMe/app/src/main/res/layout/recycleview_comment.xml" value="0.25416666666666665" />
         <entry key="..\:/Kuliah/Semester 6/Pemograman Mobile Lanjutan/TutorMe/app/src/main/res/menu/bottom_menu.xml" value="0.21296296296296297" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/TutorMe/app/src/main/res/drawable/background_profile_color.xml" value="0.3712962962962963" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/TutorMe/app/src/main/res/drawable/discussion_content.xml" value="0.2125" />
