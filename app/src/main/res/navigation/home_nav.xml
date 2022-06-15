@@ -22,7 +22,7 @@
         tools:layout="@layout/fragment_notification" />
     <fragment
         android:id="@+id/profile_nav"
-        android:name="com.speedwagon.tutorme.profile_nav"
+        android:name="com.speedwagon.tutorme.Profile.profile_nav"
         android:label="fragment_profile_nav"
         tools:layout="@layout/fragment_profile_nav" />
     <fragment
