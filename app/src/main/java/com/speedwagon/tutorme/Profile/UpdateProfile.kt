@@ -135,8 +135,9 @@ class UpdateProfile : Fragment() {
                             val bitmap = BitmapFactory.decodeFile(localFile.absolutePath)
                             pfp?.setImageBitmap(bitmap)
                         }.addOnFailureListener{ e->
-                            Snackbar.make(View(context), "${e.message}", Snackbar.LENGTH_SHORT).show()
+                            Toast.makeText(context, "foto profile belum di set", Toast.LENGTH_SHORT).show()
                         }
+
                     }
                 }
 

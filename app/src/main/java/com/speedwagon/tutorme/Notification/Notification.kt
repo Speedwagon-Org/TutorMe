@@ -9,6 +9,8 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.*
 import com.speedwagon.tutorme.Discussion.DiscussionContent
 import com.speedwagon.tutorme.Explore.ExploreAdapter
 import com.speedwagon.tutorme.Explore.ExploreItem
@@ -22,23 +24,59 @@ class notification : Fragment(),NotificationAdapter.OnNotifClickListener {
     //variable untuk implementasi database data
     private lateinit var notificationlist: ArrayList<ItemNotification>
     private lateinit var notificationRecyclerView: RecyclerView
+    private lateinit var database  : FirebaseDatabase
+    private lateinit var databaseReference : DatabaseReference
+    private lateinit var auth: FirebaseAuth
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val recyclerView = view?.findViewById<RecyclerView>(R.id.recycleNotify)
-        val itemList = createDummy(10)
-        recyclerView?.adapter = NotificationAdapter(itemList,this@notification)
-        recyclerView?.layoutManager = LinearLayoutManager(context)
+        notificationRecyclerView = view?.findViewById<RecyclerView>(R.id.recycleNotify)
+        notificationlist = arrayListOf()
+        notificationRecyclerView.adapter = NotificationAdapter(notificationlist,this@notification)
+        notificationRecyclerView.layoutManager = LinearLayoutManager(context)
+        fetch()
+    }
+
+    private fun fetch() {
+
+        auth = FirebaseAuth.getInstance()
+        database = FirebaseDatabase.getInstance("https://tutorme-78b90-default-rtdb.asia-southeast1.firebasedatabase.app/")
+        databaseReference = database.getReference("notifikasi/${auth.uid}")
+        databaseReference.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if(snapshot.exists()){
+                    notificationlist.clear()
+                    snapshot.children.forEach {
+                        val ContentObj = it.value as HashMap<*, *>
+                        val categories = ItemNotification()
+                        with(categories){
+                            try {
+                                Username = ContentObj["username"] as String
+                                id = ContentObj["id"] as String
+                                println("data notifikasi : "+Username+", "+id)
+
+                            } catch (e : Exception){
+                                Toast.makeText(context, "$e", Toast.LENGTH_SHORT).show()
+                            }
+                        }
+                        notificationlist.add(categories)
+                    }
+                    notificationRecyclerView.adapter = NotificationAdapter(notificationlist, this@notification)
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+
+        })
     }
 
     override fun onNotifClicked(position: Int, item: ItemNotification) {
         Toast.makeText(context, "starting activity in $position", Toast.LENGTH_SHORT).show()
     }
-    private fun createDummy (n : Int) : ArrayList<ItemNotification>{
-        val listOfItem = arrayListOf<ItemNotification>()
-        for (i in 0..n){
-            listOfItem.add(ItemNotification(R.drawable.ic_baseline_person_24, "User $i"))
-        }
-        return listOfItem
-    }
+
+
+
 }

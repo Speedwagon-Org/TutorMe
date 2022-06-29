@@ -11,10 +11,10 @@ import android.net.Uri
 import android.widget.RemoteViews
 import kotlinx.coroutines.Dispatchers.Main
 
-/**
- * Implementation of App Widget functionality.
- * App Widget Configuration implemented in [HomeWidgetConfigureActivity]
- */
+
+private const val PREFS_NAME = "com.speedwagon.tutorme.HomeWidget"
+private const val PREF_PREFIX_KEY = "appwidget_"
+
 class HomeWidget : AppWidgetProvider() {
     override fun onUpdate(
         context: Context,
@@ -30,7 +30,9 @@ class HomeWidget : AppWidgetProvider() {
     override fun onDeleted(context: Context, appWidgetIds: IntArray) {
         // When the user deletes the widget, delete the preference associated with it.
         for (appWidgetId in appWidgetIds) {
-            deleteTitlePref(context, appWidgetId)
+            val prefs = context.getSharedPreferences(PREFS_NAME, 0).edit()
+            prefs.remove(PREF_PREFIX_KEY + appWidgetId)
+            prefs.apply()
         }
     }
 

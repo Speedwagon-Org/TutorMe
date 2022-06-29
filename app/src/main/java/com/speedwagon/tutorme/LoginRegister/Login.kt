@@ -29,7 +29,7 @@ class Login : Fragment() {
         val btnToReg = v.findViewById<Button>(R.id.toRegister)
         val btnToHome = v.findViewById<Button>(R.id.buttonLogin)
 
-        //check apakah user telah login sebelumnya
+        //check apakah user telah login sebelumnya(auto login)
         val user = Firebase.auth.currentUser
         if (user != null) {
             val intent = Intent(context, home_main::class.java)

@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.speedwagon.tutorme.Discussion.DiscussionContent
-import com.speedwagon.tutorme.Discussion.PreLoad
 import com.speedwagon.tutorme.R
 
 class home : Fragment(), Homeadapter.OnHomeClickListener{
@@ -46,22 +45,23 @@ class home : Fragment(), Homeadapter.OnHomeClickListener{
             override fun onDataChange(snapshot: DataSnapshot) {
                 if(snapshot.exists()){
                     Homeitem.clear()
+                    println(Homeitem)
                     snapshot.children.forEach {
-                        val ContentObj = it.value as HashMap<*, *>
+                        val contentObj = it.value as HashMap<*, *>
                         val categories = HomeItem()
                         with(categories){
                             try {
-                                if(ContentObj["idUser"] == auth.uid.toString()){
-                                    if(ContentObj["username"] != null){
-                                        username = ContentObj["username"] as String
-                                        text = ContentObj["text"] as String
-                                    }
+                                if(contentObj["idUser"] == auth.uid.toString()){
+                                    text = contentObj["text"] as String
+                                    IdUser = contentObj["idUser"] as String
+                                    Idcontent = contentObj["idcontent"] as String
+                                    countreplyInString = contentObj["countreply"].toString()
+                                    Homeitem.add(categories)
                                 }
                             } catch (e : Exception){
                                 Toast.makeText(context, "$e", Toast.LENGTH_SHORT).show()
                             }
                         }
-                        Homeitem.add(categories)
                     }
                     discussionRecyclerView.adapter = Homeadapter(Homeitem, this@home)
                 }
@@ -75,13 +75,11 @@ class home : Fragment(), Homeadapter.OnHomeClickListener{
     }
 
     override fun onHomeClicked(position: Int, item: HomeItem) {
-//        val intent = Intent(context, DiscussionContent::class.java).apply {
-//            putExtra("HomeItem", item)
-//        }
-//        startActivity(intent)
-
-        val Preload = PreLoad()
-        val transaction = fragmentManager?.beginTransaction()
-        transaction?.replace(R.id.fragmentContainerView,Preload)?.commit()
+        val intent = Intent(context, DiscussionContent::class.java).apply {
+            putExtra("IDuser", item.IdUser)
+            putExtra("Text", item.text)
+            putExtra("idcontent", item.Idcontent)
+        }
+        startActivity(intent)
     }
 }

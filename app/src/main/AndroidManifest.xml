@@ -71,6 +71,11 @@
             android:parentActivityName=".home_main" />
 
         <service android:name=".Service.ServiceOnDiscussion" />
+        <activity
+            android:name=".Profile.sertifikat_preview"
+            android:parentActivityName=".home_main" />
+
+        <service android:name=".Service.ServiceOnDiscussion" />
     </application>
 
 </manifest>

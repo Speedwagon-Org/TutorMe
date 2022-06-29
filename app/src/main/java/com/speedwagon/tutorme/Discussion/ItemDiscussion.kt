@@ -7,6 +7,8 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class ItemDiscussion (
-    var username : String? = "Dummy",
-    var Text : String? = "there is no centent in here.",
-    val ProfilePicture : Int? = R.drawable.ic_baseline_person_24,): Parcelable
+    var IdUser: String = "null",
+    var Idcontent : String = "null",
+    var imageprofile: Int = R.drawable.ic_baseline_person_24,
+    var username: String = "Guest",
+    var text: String = "test"): Parcelable

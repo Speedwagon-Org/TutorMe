@@ -1,17 +1,24 @@
 package com.speedwagon.tutorme.Home
 
+import android.graphics.BitmapFactory
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.database.*
+import com.google.firebase.storage.FirebaseStorage
 import com.speedwagon.tutorme.R
+import java.io.File
 
 class Homeadapter(
     private val DiscussionList: ArrayList<HomeItem>,
     private val onExploreClickListener: OnHomeClickListener
 ) : RecyclerView.Adapter<Homeadapter.ViewHolder>(){
+
+    private lateinit var Database: FirebaseDatabase
+    private lateinit var databaseReference : DatabaseReference
 
     interface OnHomeClickListener{
         fun onHomeClicked(position: Int,item: HomeItem)
@@ -21,11 +28,13 @@ class Homeadapter(
         var imgAccount : ImageView
         var tvUsername : TextView
         var tvQuestion : TextView
+        var countreply : TextView
 
         init {
             imgAccount = itemView.findViewById(R.id.imgAccount)
             tvUsername = itemView.findViewById(R.id.tvUsername)
             tvQuestion = itemView.findViewById(R.id.tvQuestion)
+            countreply = itemView.findViewById(R.id.Countreply)
         }
     }
 
@@ -37,13 +46,45 @@ class Homeadapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val itemdiscussion = DiscussionList[position]
+        println(itemdiscussion.IdUser)
+
+        val imageRef = FirebaseStorage.getInstance().reference.child("pfp_user/user_${itemdiscussion.IdUser}_profile_pict")
+        val localFile = File.createTempFile("tempProfileImage", "png")
+        imageRef.getFile(localFile).addOnSuccessListener{
+            val bitmap = BitmapFactory.decodeFile(localFile.absolutePath)
+            holder.imgAccount.setImageBitmap(bitmap)
+        }.addOnFailureListener{ e->
+        }
+
+        //set username
+        Database = FirebaseDatabase.getInstance("https://tutorme-78b90-default-rtdb.asia-southeast1.firebasedatabase.app/")
+        databaseReference = Database.getReference("User/")
+        databaseReference.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                snapshot.children.forEach{
+                    if(snapshot.exists()){
+                        val userObj = it.value as HashMap <*,*>
+                        try {
+                            if(itemdiscussion.IdUser==it.key){
+                                holder.tvUsername.text  = userObj["username"] as String
+                            }
+                        }catch (e: java.lang.Exception){
+                        }
+                    }
+                }
+            }
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+
+        })
+
         holder.apply {
-            imgAccount.setImageResource(itemdiscussion.imageprofile)
-            tvUsername.text = itemdiscussion.username
             tvQuestion.text = itemdiscussion.text
             itemView.setOnClickListener {
                 onExploreClickListener.onHomeClicked(position,itemdiscussion)
             }
+            holder.countreply.text = itemdiscussion.countreplyInString
         }
     }
 

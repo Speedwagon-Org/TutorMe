@@ -1,5 +1,8 @@
 package com.speedwagon.tutorme
 
+import android.app.ActivityManager
+import android.content.Context
+import android.content.Intent
 import android.content.IntentFilter
 import android.net.ConnectivityManager
 import android.os.Bundle
@@ -13,6 +16,7 @@ import com.speedwagon.tutorme.Home.home
 import com.speedwagon.tutorme.Notification.notification
 import com.speedwagon.tutorme.Profile.profile_nav
 import com.speedwagon.tutorme.Receiver.InternetReceiver
+import com.speedwagon.tutorme.Service.ServiceOnDiscussion
 
 class home_main : AppCompatActivity(), InternetReceiver.ConnectionReceiverListener{
     private val home = home()
@@ -33,6 +37,7 @@ class home_main : AppCompatActivity(), InternetReceiver.ConnectionReceiverListen
         setContentView(R.layout.activity_home)
         replacefragment(home)
         NAvbar()
+        StartTheService()
     }
 
     private fun NAvbar(){
@@ -48,6 +53,30 @@ class home_main : AppCompatActivity(), InternetReceiver.ConnectionReceiverListen
             }
             true
         }
+    }
+
+    private fun StartTheService() {
+        if(isMyserviceRunning(ServiceOnDiscussion::class.java)){
+            Toast.makeText(this, "Welcome Back !!!", Toast.LENGTH_SHORT).show()
+            stopService(Intent(this, ServiceOnDiscussion::class.java))
+        }else{
+            startService(Intent(this, ServiceOnDiscussion::class.java))
+        }
+    }
+
+    //check service berjalan atau tidak
+    private fun isMyserviceRunning(mClass: Class<ServiceOnDiscussion>): Boolean {
+        val manager: ActivityManager = getSystemService(
+            Context.ACTIVITY_SERVICE
+        ) as ActivityManager
+        for(service: ActivityManager.RunningServiceInfo in
+        manager.getRunningServices(Integer.MAX_VALUE)){
+            if(mClass.name.equals(service.service.className)){
+                return true
+            }
+        }
+        return false
+
     }
 
     private  fun replacefragment(fragment: Fragment){

@@ -1,27 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="#EEFDFC"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginStart="20dp"
-    android:layout_marginEnd="20dp"
-    android:layout_marginBottom="50dp"
     android:orientation="vertical"
     tools:context=".Explore.explore">
-
-    <SearchView
-        android:id="@+id/svExplore"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:queryHint="Search ..."
-        android:background="@drawable/border"
-        android:layout_margin="10dp"/>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycleExplore"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:listitem="@layout/recycler_explore"/>
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="50dp"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical">
+            <SearchView
+                android:id="@+id/svExplore"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:queryHint="Search ..."
+                android:background="@drawable/border"/>
+        </LinearLayout>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycleExplore"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            tools:listitem="@layout/recycler_explore"/>
+    </LinearLayout>
 
 </LinearLayout>

@@ -10,6 +10,7 @@ import com.speedwagon.tutorme.Discussion.DiscussionContent
 import com.speedwagon.tutorme.R
 import com.speedwagon.tutorme.Service.Object_Service.Constants.Channel_ID
 import com.speedwagon.tutorme.Service.Object_Service.Constants.Notification_ID
+import com.speedwagon.tutorme.home_main
 
 class ServiceOnDiscussion: Service() {
     override fun onBind(intent: Intent?): IBinder? {
@@ -28,7 +29,7 @@ class ServiceOnDiscussion: Service() {
 
     @RequiresApi(Build.VERSION_CODES.O)
     private fun ShowNotification() {
-        val notificationIntent = Intent(this, DiscussionContent::class.java).apply {
+        val notificationIntent = Intent(this, home_main::class.java).apply {
             flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         }
 
@@ -38,7 +39,7 @@ class ServiceOnDiscussion: Service() {
 
         val notification = Notification
             .Builder(this, Channel_ID)
-            .setContentText("Ayo Kembali Ke Diskusi Mu!!!")
+            .setContentText("Kembali ke aplikasi")
             .setSmallIcon(R.drawable.logo)
             .setContentIntent(pendingIntent)
             .build()

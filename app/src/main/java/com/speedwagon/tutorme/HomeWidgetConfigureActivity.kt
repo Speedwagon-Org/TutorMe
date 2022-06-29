@@ -45,7 +45,7 @@ class HomeWidgetConfigureActivity : Activity() {
         setContentView(binding.root)
 
         appWidgetText = binding.appwidgetText as EditText
-        binding.addButton.setOnClickListener(onClickListener)
+        binding.addButton.setOnClickListener(  onClickListener)
 
         // Find the widget id from the intent.
         val intent = intent
@@ -55,7 +55,6 @@ class HomeWidgetConfigureActivity : Activity() {
                 AppWidgetManager.EXTRA_APPWIDGET_ID, AppWidgetManager.INVALID_APPWIDGET_ID
             )
         }
-
         // If this activity was started with an intent without an app widget ID, finish with an error.
         if (appWidgetId == AppWidgetManager.INVALID_APPWIDGET_ID) {
             finish()

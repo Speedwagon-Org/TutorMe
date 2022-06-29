@@ -12,9 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.speedwagon.tutorme.Discussion.DiscussionContent
-import com.speedwagon.tutorme.Discussion.PreLoad
 import com.speedwagon.tutorme.R
-import com.speedwagon.tutorme.RemindMe
 
 class explore : Fragment(), ExploreAdapter.OnExploreClickListener{
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -50,8 +48,10 @@ class explore : Fragment(), ExploreAdapter.OnExploreClickListener{
                         val categories = ExploreItem()
                         with(categories){
                             try {
-                                username = ContentObj["username"] as String
                                 text = ContentObj["text"] as String
+                                IdUser = ContentObj["idUser"] as String
+                                Idcontent = ContentObj["idcontent"] as String
+                                countreplyInString = ContentObj["countreply"].toString()
                             } catch (e : Exception){
                                 Toast.makeText(context, "$e", Toast.LENGTH_SHORT).show()
                             }
@@ -70,14 +70,13 @@ class explore : Fragment(), ExploreAdapter.OnExploreClickListener{
     }
 
     override fun onExploreClicked(position: Int, item: ExploreItem) {
-//        val intent = Intent(context, DiscussionContent::class.java).apply {
-//        putExtra("ExploreItem", item)
-//        }
-//        startActivity(intent)
+        val intent = Intent(context, DiscussionContent::class.java).apply {
+            putExtra("IDuser", item.IdUser)
+            putExtra("Text", item.text)
+            putExtra("idcontent", item.Idcontent)
+        }
+        startActivity(intent)
 
-        val Preload = PreLoad()
-        val transaction = fragmentManager?.beginTransaction()
-        transaction?.replace(R.id.fragmentContainerView,Preload)?.commit()
     }
 
 
